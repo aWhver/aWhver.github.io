@@ -11623,7 +11623,7 @@ var result = __WEBPACK_IMPORTED_MODULE_1_svg_sprite_loader_runtime_browser_sprit
 
 
 var service = __WEBPACK_IMPORTED_MODULE_1_axios___default.a.create({
-  baseURL: http://mockjs.com/dist/mock, // api的base_url
+  baseURL: 'http://mockjs.com/dist/mock', // api的base_url
   timeout: 5000 // 请求超时时间
 });
 
