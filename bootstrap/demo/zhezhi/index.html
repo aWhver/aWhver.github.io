@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>please enter your title</title>
+  <style type="text/css">
+	body{background:#9999ff;}
+	#wrap{widtH:720px;
+		margin:0px auto;
+		position:relative;
+		perspective:800px;
+	}
+	#wrap .btn{width:100%;height:40px;position:absolute;z-index:9;}
+	#wrap div{
+		width:100%;
+		position:absolute;
+		text-align:center;
+		transform-style:preserve-3d;
+		transform-origin:top;
+		transform:rotatex(-120deg);
+		top:40px;
+	}
+	#wrap div.open{transform:rotatex(0deg);animation:down 1s ease;}
+	#wrap div.open>span{box-shadow:inset 0px 0px 100px 20px rgba(0,0,0,0)}
+	#wrap div.close{transform:rotatex(-120deg);animation:up 1s ease;}
+	#wrap div.close>span{box-shadow:inset 0px 0px 100px 20px rgba(0,0,0,1)}
+	#wrap span{
+		box-shadow:inset 0px 0px 100px 20px rgba(0,0,0,0.5);/*第一次下来时有阴影*/
+		display:block;width:100%;
+		height:38px;
+		line-height:38px;
+		transition:1s;
+		background:#ddd;
+		background-image:url(1.jpg);
+		}
+	@keyframes down{
+		0%{transform:rotatex(-120deg);}
+		25%{transform:rotatex(30deg);}
+		50%{transform:rotatex(-15deg);}
+		75%{transform:rotatex(10deg);box-shadow:inset 0 0 5px rgba(0,0,0,.3);}
+		100%{transform:rotatex(0deg);}
+	}
+	@keyframes up{
+		from{transform:rotatex(0deg);}
+		to{transform:rotatex(-120deg);}
+	}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<button class="btn">放</button>
+		<div>
+			<span></span>
+			<div>
+				<span></span>
+				<div>
+					<span></span>
+					<div>
+						<span></span>
+						<div>
+							<span></span>
+							<div>
+								<span></span>
+								<div>
+									<span></span>
+									<div>
+										<span></span>
+										<div>
+											<span></span>
+											<div>
+												<span></span>
+												<div>
+													<span></span>
+													<div>
+														<span></span>
+														<div>
+															<span></span>
+															<div>
+																<span></span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var oBtn = document.getElementsByClassName('btn')[0];
+		var aDiv = wrap.getElementsByTagName('div');
+		var aSpan = wrap.getElementsByTagName("span");
+		var timer = null;
+		var i;
+		var onoff = true;
+		oBtn.onclick = function(){
+			if ( onoff )
+			{
+				i=0;
+				timer=setInterval(function(){
+					if ( i == aDiv.length-1 )
+					{
+						clearInterval(timer);
+						oBtn.innerHTML= "收";
+					}
+					aDiv[i].className = 'open';
+					i++;
+				},200);
+			}else{
+				i=aDiv.length-1;
+				timer=setInterval(function(){
+					if ( i == 0 )
+					{
+						clearInterval(timer);
+						oBtn.innerHTML= "放";
+					}
+					aDiv[i].className = 'close';
+					i--;
+				},200);
+			};
+			onoff = !onoff;
+		};
+		for (var i=0;i<aSpan.length ;i++ )
+		{
+			aSpan[i].style.backgroundPosition= '0px -' + 38*i + 'px';
+		}
+	</script>
+ </body>
+</html>

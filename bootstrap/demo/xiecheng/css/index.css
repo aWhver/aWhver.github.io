@@ -1,0 +1,106 @@
+@charset 'utf-8';
+html{-webkit-overflow-scrolling:touch;}
+*{margin:0;padding:0;font-family:'Micrlsoft yahei';font-size:14px;}
+a{display:block;text-decoration:none;-webkit-tap-highlight-color: transparent;-webkit-appearance: none;}
+li{list-style:none;}
+body{min-width:320px;max-width:770px;}
+.clearfix:after{content:'';display:block;clear:both;height:0;}
+/*Ñ©±ÌÍ¼*/
+	.sprite-icon{background:url(../image/icon.png)no-repeat;background-size:104px 328px;display:block;}
+	.sprite1-icon{background:url(../image/nav.png)no-repeat;background-size:20px 245px;display:block;}
+	.sprite2-icon{background:url(../image/text.png)no-repeat;background-size:79px 57px;display:block;}
+	.sprite3-icon{background:url(../image/icon-gg@2x.png)no-repeat;background-size:36px 15px;display:block;}
+/*header*/
+	#header{width:100%;height:44px;overflow:hidden;position:fixed;top:0px;z-index:999;box-sizing:border-box;padding-right:65px;border:1px solid #ddd;background:#F6F6F6;}
+	#header .h_search{width:100%;height:44px;margin-left:10px;}
+	#header .h_search input{text-indent:20px;width:100%;height:22px;border-radius:5px;outline:none;border:1px solid #ddd;margin-top:10px;}
+	#header .h_search span.search-icon{width:25px;height:20px;background-position:-50px -279px;position:absolute;left:3px;top:15px;}
+	#header .login{width:44px;height:38px;position:absolute;top:0;right:4px;text-align:center;}
+	#header .login a span:nth-child(1){width:50px;height:24px;background-position:-50px -194px;}
+	#header .login a span:nth-child(2){font-size:12px;color:#4eb6e4;}
+/*banner*/
+	#banner{width:100%;position:relative;padding-top:44px;}
+	#banner .banner_img{width:100%;overflow:hidden;}
+	#banner .banner_img ul{width:800%;overflow:hidden;transform:translate3d(-12.5%,0,0)}
+	#banner .banner_img ul.tran{transition:margin-left .3s;}
+	#banner .banner_img ul li{width:12.5%;float:left;}
+	#banner .banner_img ul li a{width:100%;}
+	#banner #btn{width:100%;position:absolute;bottom:8px;text-align:center;}
+	#banner #btn span.swiper-pagination-bullet{display:inline-block;width:20px;height:4px;border-radius:2px;background:rgba(255,255,255,.5);}
+	#banner #btn span.swiper-pagination-bullet-active{background:rgba(255,255,255,1)}
+	
+/*main*/
+	main{width:100%;background:#f2f2f2;}
+/*nav*/
+	#nav{width:100%;padding:4px;box-sizing:border-box;margin-bottom:4px;}
+	#nav ul{width:100%;}
+	#nav ul li.theme{width:100%;height:91px;margin-bottom:4px;display:flex;border-radius:4px;text-align:center;}
+	#nav ul li.theme:nth-child(1){background:#ff697a;}
+	#nav ul li.theme:nth-child(2){background:#3d98ff;}
+	#nav ul li.theme:nth-child(3){background:#44c522;}
+	#nav ul li.theme:nth-child(4){background:#fc9720;}
+	#nav ul li.theme div:nth-child(1) h5{color:#fff;padding:13px;}
+	#nav ul li .hotel span.hotel-icon{background-position:0px -130px;width:40px;height:45px;display:inline-block;}
+	#nav ul li .ticket span.ticket-icon{background-position:0px -298px;width:40px;height:45px;display:inline-block;}
+	#nav ul li .travel span.travel-icon{background-position:0px -182px;width:40px;height:45px;display:inline-block;}
+	#nav ul li div{flex:1;}
+	#nav ul li.theme div:nth-child(2){border-left:1px solid #fff;}
+	#nav ul li.theme div:nth-child(3){border-left:1px solid #fff;}
+	#nav ul li.theme div ul li{height:45px;}
+	#nav ul li.theme div ul li:nth-child(1){border-bottom:1px solid #fff;}
+	#nav ul li.theme div ul li a{width:100%;line-height:100%;line-height:45px;font-size:16px;color:#fff;font-weight:600;}
+/*service*/
+	#service{width:100%;padding:0 4px;box-sizing:border-box;}
+	#service .rows{width:100%;display:flex;height:60px;border-radius:5px;overflow:hidden;background:#fff;margin-bottom:1px;}
+	#service .rows .cols{max-width:25%;height:100%;flex:0 0 25%;text-align:center;border-right:1px solid #f2f2f2;}
+	#service .rows .cols a{width:100%;height:100%;}
+	#service .rows .cols span:nth-child(1){width:20px;height:20px;margin-top:13px;display:inline-block;}
+	#service .rows .cols span.des{display:block;color:#333;font-size:12px;}
+	#service .rows .cols span.free-icon{background-position:0 -80px;}
+	#service .rows .cols span.theme-icon{background-position:0 -100px;}
+	#service .rows .cols span.day-icon{background-position:0 -120px;}
+	#service .rows .cols span.enjoy-icon{background-position:0 -140px;}
+	#service .rows .cols span.hotel-icon{background-position:0 -160px;}
+	#service .rows .cols span.study-icon{background-position:0 -180px;}
+	#service .rows .cols span.money-icon{background-position:0 -200px;}
+	#service .rows .cols span.add-icon{background-position:0 -220px;}
+	#service .rows .cols span.car-icon{background-position:0 0px;}
+	#service .rows .cols span.airport-icon{background-position:0 -20px;}
+	#service .rows .cols span.bag-icon{background-position:0 -40px;}
+	#service .rows .cols span.more-icon{background-position:0 -60px;}
+/*special*/
+	#special{width:100%;background:#fff;margin-top:8px;}
+	.title{width:100%;height:45px;position:relative;}
+	.title h5{width:100%;height:34px;padding-top:11px;}
+	#special .title h5 .title-left-icon{width:100%;height:20px;background-position:0px 1px;margin-left:10px;}
+	.title .xiadan{width:115px;height:20px;position:absolute;top:11px;right:4px;background:-webkit-linear-gradient(left,#ff4e63,#ff6cc9);border-radius:12px;text-align:center;line-height:20px;}
+	.title .xiadan span{color:#fff;margin-left:4px;}
+	.title .xiadan i{color:#fff;font-size:16px;font-weight:600;font-style:normal;vertical-align:-1px;}
+	#special .con{width:100%;display:flex;padding:0 8px 8px;background:#fff;box-sizing:border-box;}
+	#special .con-left{flex:0 0 50%;position:relative;max-width:50%;background:#f9f9f9;-webkit-box-flex:0;}
+	#special .con-right{flex:0 0 50%;;margin-left:4px;max-width:50%;background:#f9f9f9;-webkit-box-flex:0;}
+	#special .con-left a.hot{width:40px;height:20px;position:absolute;background:#fd3a51;color:#fff;text-align:center;line-height:20px;}
+	#special .con-left p a{padding:8px;line-height:22px;font-size:14px;color:#333;display:-webkit-box;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+	#special .con-left div.price{padding-left:8px;margin-bottom:15px;}
+	#special .con-left div.price span:nth-child(1){color:#fd3a51;font-size:18px;font-weight:600;}
+	#special .con-left div.price span:nth-child(2){display:inline-block;padding:3px 10px;font-size:12px;border-radius:14px;background:#fd3a51;color:#fff;border}
+	#special .con-right .con-top{width:100%;height:87px;position:relative;border-bottom:4px solid #fff;}
+	#special .con-right .con-top a img{position:absolute;right:0;bottom:4px;}
+	#special .con-right .con-top dt{color:#fd3a51;padding:8px 8px 5px;font-weight:600;}
+	#special .con-right .con-top dd{color:#444;padding-left:8px;font-size:12px;}
+	#special .con-right .con-bottom{width:100%;display:flex;}
+	#special .con-right .con-bottom a{flex:1;height:120px;display:block;background:#f9f9f9;border-right:4px solid #fff;}
+	#special .con-right .con-bottom a:nth-child(1) span:nth-child(1){display:block;color:#6aabff;font-weight:600;padding:8px 10px 5px;}
+	#special .con-right .con-bottom a:nth-child(1) span:nth-child(2){display:block;color:#444;font-size:12px;margin-left:10px;}
+	#special .con-right .con-bottom a:nth-child(2) span:nth-child(1){display:block;color:#53ca72;font-weight:600;padding:8px 10px 5px;}
+	#special .con-right .con-bottom a:nth-child(2) span:nth-child(2){display:block;color:#444;font-size:12px;margin-left:10px;}
+	#special .con-right .con-bottom a span:nth-child(2) i{color:#6aabff;font-style:normal;font-size:12px;}
+	#special .con-right .con-bottom a:nth-child(2) span:nth-child(2) i{color:#53ca72;font-style:normal;font-size:12px;}
+	#special .con-right .con-bottom a img{display:block;margin:30px auto 0;}
+/*activity*/
+	#activity{width:100%;background:#fff;margin-top:8px;}
+	#activity .a-title-left-icon{width:72px;height:20px;background-position:0 -20px;margin-left:10px;display:inline-block;}
+	#activity .a-title1-left-icon{width:36px;height:20px;background-position:0 0px;margin-left:10px;display:inline-block;}
+	#activity .act-con{width:100%;}
+	#activity .act-con ul li{width:50%;float:left;}
+	#activity .act-con ul li a{width:100%;}

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>图片懒加载</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	img{width:400px;
+		height:300px;
+		display:block;
+	}
+  </style>
+ </head>
+ <body>
+	<img src="img/1.jpg" alt="" />
+	<img src="img/2.jpg" alt="" />
+	<img src="img/3.jpg" alt="" />
+	<img src="img/4.jpg" alt="" />
+	<img src="img/5.jpg" alt="" />
+	<img src="img/6.jpg" alt="" />
+	<img src="img/7.jpg" alt="" />
+	<img src="img/8.jpg" alt="" />
+	<img src="img/9.jpg" alt="" />
+	<img src="img/10.jpg" alt="" />
+	<img src="img/11.jpg" alt="" />
+	<img src="img/12.jpg" alt="" />
+	<img src="img/13.jpg" alt="" />
+	<img src="img/14.jpg" alt="" />
+ </body>
+ <script type="text/javascript">
+	var oImg = document.getElementsByTagName('img');
+	
+		for (var i=0;i<oImg.length ;i++ )
+		{
+			oImg[i].dataSrc= oImg[i].src;
+			oImg[i].src="img/loading.jpg";
+		}
+		//alert(arr.length)
+		window.onload=function(){
+			var arr=[];
+			for (var i=0;i<oImg.length ;i++ )
+			{
+				arr[i]=oImg[i];
+			}
+		imgShow();
+		window.onscroll=imgShow;
+			function imgShow(){
+				for (var i=arr.length-1;i>=0 ;i-- )
+				{
+					var top = offset(arr[i]);
+					//alert(top)
+					var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+					if ( top<winSize().height+scrollTop)
+					{
+						arr[i].src=arr[i].dataSrc;
+						arr.splice(i,1);
+					}
+				}
+			};
+			function offset(obj){
+				var top=0;
+				if ( obj!=document.body )
+				{
+					top += obj.offsetTop;
+					obj = obj.parentNode;
+				}
+				return top;
+			};
+			//浏览器宽高
+			//alert('innerWidth' in window)
+			//alert(document.documentElement.clientHeight);
+			//alert(winSize().height)
+			function winSize() { 
+				var e = window,a = 'inner';
+				if (!('innerWidth' in window )){ 
+					a = 'client'; 
+					e = document.documentElement || document.body; 
+				};
+				return { width : e[ a+'Width' ] , height : e[ a+'Height' ] }; 
+			};
+		};
+		
+ </script>
+</html>

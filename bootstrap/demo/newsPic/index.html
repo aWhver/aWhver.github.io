@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>please enter your title</title>
+  <style type="text/css">
+	*{margin:0;padding:0;font-family:'Microsoft yahei'}
+	li{list-style:none;}
+	#wrap{
+		width:100%;
+		min-width:1000px;
+		margin:0 auto;
+		height:540px;
+	}
+	.container{
+		width:1000px;
+		margin:0 auto;
+		position:relative;
+	}
+	#wrap .pic{
+		width:870px;
+		height:100%;
+		margin:0 auto;
+	}
+	#left,#right{
+		width:40px;
+		height:63px;
+		position:absolute;
+		top:50%;
+		margin-top:-31px;
+		background:url(img/arrow.jpg);
+		cursor:pointer;
+	}
+	#left{
+		left:0;
+		background-position:left top;
+	}
+	#right{
+		right:0;
+		background-position:right top;
+	}
+	#tab{
+		width:100%;
+		height:98px;
+		border:1px solid #ddd;
+		margin-top:20px;
+		position:relative;
+	}
+	#prev,#next{
+		width:29px;
+		height:98px;
+		position:absolute;
+		top:0;
+		cursor:pointer;
+		background:#fff;
+		font-size:40px;
+		line-height:98px;
+		text-align:center;
+		font-weight:900;
+		color:#bbb;
+		z-index:10;
+	}
+	#prev{
+		left:0;
+		border-right:1px solid #ddd; 
+	}
+	#next{
+		right:0;
+		border-left:1px solid #ddd; 
+	}
+	#tab .tab-list{
+		min-width:1000px;
+		padding:0 30px;
+		height:98px;
+		overflow:hidden;
+		
+	}
+	#tab .tab-list .tab-box{
+		position:relative;
+	}
+	#tab .tab-list ul{
+		position:relative;
+		z-index:9;
+		overflow:hidden;
+	}
+	#tab .tab-list li{
+		background-size:cover;
+		width:120px;
+		height:75px;
+		margin:11px 15px;
+		float:left;
+	}
+	#tab .tab-list .mask{
+		width:130px;
+		height:89px;
+		background:url(img/mark.png);
+		position:absolute;
+		left:40px;
+		top:0
+	}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<div class="container">
+			<div class="pic">
+				<div class="img">
+					<img src="img/1.jpg" width="870"height="540"alt="" />
+				</div>
+			</div>
+			<div class="btn">
+				<span id="left"></span>
+				<span id="right"></span>
+			</div>
+		</div>
+	</div>
+	<div id="tab">
+		<div id="prev">&lt;</div>
+		<div id="next">&gt;</div>
+		<div class="tab-list">
+			<!-- 套这层盒子是为了mask的范围不限制在串口内 -->
+			<div class="tab-box">
+				<ul></ul>
+				<div class="mask"></div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript"src="js/jquery-1.12.1.min.js"></script>
+	<script type="text/javascript">
+		(function(num){
+			var $ul = $('#tab .tab-list ul');
+			var $tab = $('#tab .tab-list .tab-box');
+			var $mask = $('#tab .mask');
+			var $img = $('.pic .img img');
+			var $imgBox = $('.pic .img');
+			var tabWidth = $('#tab .tab-list').width(); 
+			var $prev = $('#prev'),$next = $('#next');
+			var $left = $('#left'),$right = $('#right');
+			var len = num,index=0,liLeft = null,$tabLi=null,nowMargin=0;
+			var prevDate = 0;
+			init();
+			
+			//左切换
+			$left.on('click',function(){
+				if ( new Date() - prevDate >400 )
+				{
+					prevDate = new Date();
+					index==0?index=$tabLi.length-1:index--;
+				
+					change();
+				}
+			});
+
+			//右切换
+			$right.on('click',function(){
+				if ( new Date() - prevDate >400 )
+				{
+					prevDate = new Date();
+					index==$tabLi.length-1?index=0:index++;
+					
+					change();
+				}
+			});
+
+			//点击相应图片显示
+			$tabLi.on('click',function(){
+				if ( new Date() - prevDate >400 )
+				{
+					prevDate = new Date();
+					index = $(this).index();
+					
+					change();
+				}
+			})
+
+			//下翻页
+			$next.on('click',function(){
+				
+				nowMargin = parseInt($tab.css('marginLeft'));
+				var max = tabWidth - $tab.width();
+				var marginLeft = Math.max(nowMargin - tabWidth,max);
+				
+				$tab.animate({
+					'marginLeft': marginLeft + 'px'
+				});
+			});
+			
+			//上翻页
+			$prev.on('click',function(){
+				nowMargin = parseInt($tab.css('marginLeft'));
+				var marginLeft = Math.min(nowMargin + tabWidth,0);
+				
+				$tab.animate({
+					'marginLeft': marginLeft + 'px'
+				});
+			});
+
+			//tab初始化
+			function init(){
+				var liW = null;
+				for (var i=0;i<len ;i++ )
+				{
+					var $li = $('<li></li>');
+					$li.css('backgroundImage','url(img/'+(1+i)+'.jpg)');
+					$ul.append($li)
+				}
+
+				liW = $('#tab .tab-list ul li').width();
+				$tab.css('width',(liW+30)*len+'px');//计算tab-box宽度
+				
+				$tabLi = $('.tab-list ul li');
+				liLeft = $tabLi.eq(index).position().left + 10 ;
+				$mask.css('left',liLeft+'px')
+			};
+
+			
+			function change(){
+				$img.attr('src','img/'+ (index+1) +'.jpg');
+				$imgBox.fadeOut(300);
+				setTimeout(function(){
+					$imgBox.fadeIn(300);
+				},30);
+
+				nowMargin = -$tabLi.eq(index).position().left+tabWidth/2- $tabLi.eq(index).width()/2;
+				nowMargin = Math.max(nowMargin,tabWidth - $tab.width());
+				nowMargin = Math.min(nowMargin,0);
+
+				$tab.animate({
+					'marginLeft': nowMargin +'px'
+				},300);
+
+				//$(this).position().left = nowMargin - tabWidth/2 + $tabLi.eq(index).width()/2
+				$mask.css('left',$tabLi.eq(index).position().left+10+'px');
+			};
+		})(22);
+		
+	</script>
+ </body>
+</html>

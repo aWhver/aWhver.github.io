@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>please enter your title</title>
+  <style type="text/css">
+	p{margin-left:32px;}
+  </style>
+ </head>
+ <body>
+	<div style="color:gold">
+		<h3>video:</h3>
+			<p>autoplay 自动播放（打开就播放）</p>
+			<p>controls 向用户显示播放控件</p>
+			<p>width 设置宽度</p>
+			<p>height 设置高度</p>
+			<p>loop 是否循环播放</p>
+			<p>preload 是否等加载完在播放</p>
+			<p>src url地址</p>
+			<p>poster 加载等待的画面图片 </p>
+			<p>autobuffer 设置为浏览器缓冲方式 autoplay不设置才有效</p>
+		<h3>video API </h3>
+			<p>play(),pause(),load()</p>
+			<p>playbackRate 播放速度</p>
+			<p>全屏：element.webkitRequestFullscreen();webkit为兼容前缀</p>
+			<p>退出全屏：document.webkitCancelFullscreen();webkit为兼容前缀</p>
+			<p>w3c不需要前缀</p>
+
+		<h3>audio:</h3>
+			<p>currentTime 从开始到现在所用时间</p>
+			<p>duration 总时间</p>
+			<p>volume 0-1的音量相对值</p>
+			<p>muted 是否静音 true/false</p>
+			<p>pasued 是否暂停（只读）</p>
+			<p>ended 是否播放完毕（只读）</p>
+		<div>创建一个与音乐频次等长数组的方法</div>
+			<p>var voicehigh = new Unit8Array(analyser.frequencyBinCount)</p>
+		<div>将分析出来的音频数据添加到数组里面</div>
+			<p>analyser.getByteFrequencyData(voicehigh) </p>
+	</div>
+ </body>
+</html>

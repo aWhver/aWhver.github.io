@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" onselectstart="return false">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>相册展示</title>
+  <style type="text/css">
+	*{margin:0px;padding:0;}
+	body{perspective:800px;background:#000;overflow:hidden;}
+	#wrap{
+		width:100%;
+		height:200px;
+		margin:200px auto;
+		position:relative;
+		transform-style:preserve-3d;
+	}
+	#wrap img{
+		width:320px;
+		height:200px;
+		position:absolute;
+		box-shadow:0 0 5px #0f0;
+		border-radius:3px;
+		transition:1s;
+		-webkit-box-reflect:below 5px -webkit-linear-gradient(top,rgba(0,0,0,0) 30%,rgba(0,0,0,1) 70%);
+	}
+	#wrap img.left{
+		transform:rotatey(45deg)translatez(-100px);
+	}
+	#wrap img.middle{
+		transform:translatez(100px);
+	}
+	#wrap img.right{
+		transform:rotatey(-45deg)translatez(-100px);
+	}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<img src="img/1.jpg" alt="" class="left"/>
+		<img src="img/2.jpg" alt="" class="left" />
+		<img src="img/3.jpg" alt="" class="left" />
+		<img src="img/4.jpg" alt="" class="left" />
+		<img src="img/5.jpg" alt="" class="middle" />
+		<img src="img/6.jpg" alt="" class="right" />
+		<img src="img/7.jpg" alt="" class="right"/>
+		<img src="img/8.jpg" alt="" class="right" />
+		<img src="img/9.jpg" alt="" class="right" />
+	</div>
+	<script type="text/javascript">
+		var oWrap = document.getElementById('wrap');
+		var aImg = oWrap.getElementsByTagName('img');
+		var mIndex=parseInt(aImg.length/2);
+		var midLeft = document.body.offsetWidth/2-160;
+		window.onresize=function(){
+			midLeft = document.body.offsetWidth/2-160;
+			for (var i=0;i<aImg.length ;i++)
+			{
+				aImg[i].style.left=midLeft+(i-mIndex)*100+"px";
+			};
+		};
+		for (var i=0;i<aImg.length ;i++ )
+		{
+			aImg[i].style.left=midLeft+(i-mIndex)*100+"px";
+			
+			aImg[i].index=i;
+			aImg[i].onclick=function(){
+				var nIndex = this.index;
+				for (var j=0;j<aImg.length ;j++ )
+				{
+					aImg[j].style.left=aImg[j].offsetLeft-100*(nIndex-mIndex)+"px";
+					if ( j<nIndex )
+					{
+						aImg[j].className = "left";
+					}else if ( j==nIndex )
+					{
+						aImg[j].className = "middle";
+					}else{
+						aImg[j].className = "right";
+					};
+				}
+				mIndex=nIndex;                        
+			};
+			aImg[i].onmousedown=function(){return false};
+		}
+	</script>
+ </body>
+</html>

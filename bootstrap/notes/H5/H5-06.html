@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>please enter your title</title>
+  <style type="text/css">
+	body{background:#3399ff;}
+	*{margin:0;padding:0;}
+	ul{list-style:none;}
+	#wrap{
+		margin:10px auto;
+		width:600px;
+	}
+	#wrap .title{
+		margin:10px auto;
+		text-align:center;
+	}
+	.resize ,.reflect,.sizing,.column,.forbid,.transi-anima{
+		width:600px;
+		height:auto;
+		padding:5px 10px;
+		border:2px solid #ff99ff;
+		border-radius:5px;
+		margin-bottom:10px;
+	}
+	#wrap li.word{
+		margin-left:10px;
+	}
+	.resize li,.reflect li,.column li,.transi-anima li,.forbid li{
+		padding:10px 5px 8px 5px;
+		margin-left:35px;
+	}
+	.reflect li p{margin-left:35px;}
+	.sizing-con{
+		padding:10px 5px 8px 5px;
+		margin-left:35px;
+		line-height:2;
+	}
+	.column-del p{line-height:2;}
+  </style>
+ </head>
+ <body>
+	<div id="wrap"style="color:#000;">
+		<h3 class="title">06-css3-盒模型(下)，过渡和动画的监听事件</h3>
+<div class="resize">
+	<ul>
+		<li class="word"><p><strong>resize: </strong>配合overflow:auto一起使用，允许盒子调整大小</p></li>
+		<li>none 不允许调整大小</li>
+		<li>both 水平垂直都可以缩放</li>
+		<li>horizontal 只有水平方向可以缩放</li>
+		<li>vertical 只有垂直方向可以缩放</li>
+	</ul>
+</div>
+<div class="reflect">
+	<ul>
+		<li class="word"><strong>box-reflect:</strong><span>a</span> <span>b</span><span> c</span>; 倒影</li>
+			<li>a 倒影方位：above 上、below 下、left 左、right 右 必须有</li>
+			<li>b 倒影与对象的间隔 像素/百分比 可选</li>
+			<li>c 遮罩层：可选
+				<p>none 无遮罩层</p>
+				<p>url 图片地址</p>
+				<p>线性渐变/径向渐变(rgba)</p>
+			</li>
+	</ul>
+</div>
+<div class="sizing">
+	<div class="sizing-con">
+		<strong>box-sizing:</strong>盒模型形式
+			<p style="padding-left:20px;">content-box 标准和模型（宽度=设定宽+padding+border+内容）</p>
+			<p style="padding-left:20px;">border-box 怪异盒模型（设定总宽不变，内容看情况缩减）</p>
+	</div>
+</div>
+<div class="column">
+	<ul>
+		<li class="word"><strong>columns:</strong><span>a </span><span>b;</span> 多列排布（火狐要加兼容前缀）</li>
+		<li>a 每列宽度 分解属性 column-width</li>
+		<li>b 列数 可缺省 分解属性 column-count</li>
+		<li class="column-del">
+			<p>column-gap:间隙的大小，初始值和font-size一样大</p>
+			<p>column-rule:列与列之间的边框，值类似于border</p>
+			<p>column-span:设置给某个子元素，是否跨列 none（默认）/all</p>
+		</li>
+	</ul>
+	<ul>
+	<li class="word"><strong>只兼容谷歌</strong></li>
+	<li><p>-webkit-column-break-before:所有元素之前是否另起一列 auto不规定/always总是/avoid避免</p></li>
+	<li><p>-webkit-column-break-after:所有元素之后是否另起一列 auto不规定/always总是/avoid避免</p></li>
+	</ul>
+</div>
+<div class="forbid">
+<h4 style="margin-left:35px;">关于禁止选中</h4>
+<ul>
+	<li>user-select:none;	</li> 
+	<li>火狐加兼容：-moz-user-select:none;</li>
+	<li>IE加兼容：-ms-user-select:none;</li>
+	<li>IE9及之前onselectstart='return false';</li>
+</ul>
+	<p style="margin-left:35px;"><strong>伪元素</strong> ::selection 可以修改选中内容的样式</p>
+</div>
+<div class="transi-anima">
+<h4 style="margin-left:35px;">过渡/动画相关的监听事件</h4>
+<ul>
+	<li>transitionend / 过渡结束时触发</li>
+	<li>animationstart / 动画开始时触发</li>
+	<li>animationiteration / 动画重复执行时触发</li>
+	<li>animationend / 动画结束时触发1</li>
+</ul>
+	</div>
+</div>
+ </body>
+</html>

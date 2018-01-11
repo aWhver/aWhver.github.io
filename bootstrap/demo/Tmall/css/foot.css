@@ -1,0 +1,115 @@
+@charset 'utf-8';
+#foot{
+	width:100%;
+	border-top:1px solid #D1D7DC;
+	background:#fff;
+	}
+	/*末尾第一部分*/
+#foot .foot-first{
+	width:1200px;
+	height:100px;
+	margin:15px auto;
+	/*line-height:130px;*/
+	}
+#foot .foot-first .box{
+	display:block;
+	width:237px;
+	height:72px;
+	float:left;
+	padding-left:60px;
+	padding-top:28px;
+	line-height:18px;
+	}
+#foot .foot-first .serverse{
+	width:150px;
+	height:42px;
+	display:inline-block;
+	}
+#foot .foot-first .line{
+	height:42px;
+	width:1px;
+	background:#666;
+	display:inline-block;
+	margin-top:28px;
+	float:left;
+	}
+#foot .foot-first p{font-size:14px;font-weight:700;}
+#foot .foot-first .item{color:#666;}
+#foot .foot-first i{font-size:32px;vertical-align:top;color:red;}
+/*末尾第二部分*/
+#foot .foot-second{
+	width:1200px;
+	border-top:1px solid #ededed;
+	height:190px;
+	padding-top:20px;
+	margin:auto;
+	background:url('../images/tmallhead.jpg') no-repeat 45px bottom;
+	}
+#foot .foot-second dl{
+	width:186px;
+	padding-left:52px;
+	float:left;
+	}
+#foot .foot-second dl dt{
+	color:#646464;
+	font-size:14px;
+	font-weight:700;
+	height:30px;
+	line-height:30px;
+	}
+#foot .foot-second a{
+	display:block;
+	width:100px;
+	height:20px;
+	line-height:20px;
+	color:#8b8b8b;
+	}
+#foot .foot-second .mobile{
+	display:block;
+	width:105px;
+	height:105px;
+	}
+/*末尾第三部分*/
+#foot .foot-third{
+	width:100%;
+	background:#000;
+	border-top:2px solid #c40000;
+	
+	}
+#foot .foot-third .copyright{
+	width:1200px;
+	margin:auto;
+	line-height:25px;
+	}
+#foot .foot-third .copyright a{
+	color:#fff;
+	margin-right:3px;
+	}
+#foot .foot-third .link{
+	width:1200px;
+	margin:auto;
+	}
+#foot .foot-third .link a{
+	color:#fff;
+	margin-right:3px;
+	padding-right:5px;
+	border-right:1px solid #fff;
+	}
+#foot .foot-third .tmall-copyright{
+	color:#a4a4a4;
+	width:1200px;
+	margin:10px auto 0;
+	}
+#foot .foot-third .tmall-copyright a{
+	margin-right:65px;
+	color:#a4a4a4;
+	}
+#foot .foot-third .tmall-copyright p{
+	margin-top:15px;
+	
+	}
+#foot .foot-end{
+	background:#000;
+	width:100%;
+	height:20px;
+	}

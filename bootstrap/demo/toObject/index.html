@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>面向对象轮播</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	li{list-style:none;}
+	#wrap{
+		width:600px;
+		height:420px;
+		position:relative;
+		margin: 20px auto;
+	}
+	#pic{
+		width:600px;
+		height:420px;
+	}
+	#pic img{
+		width:600px;
+		height:420px;
+		display:none;
+	}
+	#tab{
+		width:130px;
+		height:18px;
+		position:absolute;
+		bottom:10px;
+		left:50%;
+		margin-left:-53.5px;
+	}
+	#tab li{
+		height:18px;
+		width:18px;
+		border-radius:100%;
+		background:#fff;
+		margin:0 4px;
+		float:left;
+		cursor:pointer;
+	}
+	#tab li.on{background:#cc99ff;}
+	#btn span{
+		width:30px;
+		height:50px;
+		position:absolute;
+		top:50%;
+		margin-top:-25px;
+		background:rgba(0,0,0,.5);
+		text-align:center;
+		line-height:50px;
+		color:#fff;
+		font-size:30px;
+		cursor:pointer;
+	}
+	#btn span.right{
+		right:0px;
+	}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<ul id="pic">
+			<li><img src="images/2.jpg" alt="" /></li>
+			<li><img src="images/3.jpg" alt="" /></li>
+			<li><img src="images/4.jpg" alt="" /></li>
+			<li><img src="images/5.jpg" alt="" /></li>
+			<li><img src="images/6.jpg" alt="" /></li>
+		</ul>
+		<div id="tab">
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<div id="btn">
+			<span class="left">&lt</span>
+			<span class="right">&gt</span>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var oPic = document.getElementById("pic");
+		var aImg = oPic.getElementsByTagName("img");
+		var oTab = document.getElementById("tab");
+		var aLi = oTab.getElementsByTagName("li");
+		var oWrap = document.getElementById("wrap");
+		var oBtn = document.getElementById("btn");
+		var aSpan = oBtn.getElementsByTagName("span");
+		//var index = 0;
+		//var timer = null;
+		//var length = aLi.length;
+		function Banner(json){ //构造函数
+			this.oPic = json.oPic;
+			this.aImg = json.aImg;
+			this.oTab = json.oTab;
+			this.aLi = json.aLi;
+			this.oWrap = json.oWrap;
+			this.length = this.aLi.length;
+			this.index = 0;
+			this.timer = null;
+			//this.init();
+		};
+
+		Banner.prototype.init=function(){//点击按钮图片显示隐藏
+			this.aImg[0].style.display = "block"; //显示第一张图片
+			this.aLi[0].className = "on";	//第一个按钮出发on
+			var This = this;
+			for ( var i=0 ;i<this.length ;i++ )
+			{
+				this.aLi[i].index = i;
+				this.aLi[i].onclick = function(){
+					var a = this;
+					This.change(function(){
+						This.index = a.index;
+					});
+				};
+			}
+			this.autoPlay();
+			this.oWrap.onmouseenter = function(){
+				clearInterval(This.timer);
+			};
+			this.oWrap.onmouseleave = function(){
+				This.autoPlay();
+			};
+		};
+		
+		Banner.prototype.change=function(fn){//图片和按钮的改变
+			this.aImg[this.index].style.display = "none";
+			this.aLi[this.index].className = "";
+			fn && fn();
+			this.aImg[this.index].style.display = "block";
+			this.aLi[this.index].className = "on";
+		};
+
+		Banner.prototype.autoPlay = function(){//自动轮播
+			var This = this;
+			this.timer = setInterval(function(){
+				This.change(function(){
+					This.index++;
+					This.index%=This.length;
+				});
+			},2000);
+		};
+		
+		
+		function Bannerchild(json1){
+			Banner.call(this,{
+				aLi : aLi,
+				oTab : oTab,
+				aImg : aImg,
+				oPic : oPic,
+				oWrap : oWrap
+			});
+			this.btn = json1.oBtn;
+			this.span = json1.aSpan;
+			//this.length1 = this.span.length;
+			this.clickBtn();
+			this.init();
+		}
+		//拷贝对象 使父级不应子集的改变而改变
+		Bannerchild.prototype = new clone(Banner.prototype);
+		Bannerchild.prototype.clickBtn = function(){
+			var This = this;
+			for (var i=0;i<this.span.length ;i++ )
+			{
+				this.span[i].index = i;
+				this.span[i].onclick = function(){
+					if ( this.index )
+					{
+						This.change(function(){
+							This.index++;
+							This.index %= This.length;
+						})
+					}else{
+						This.change(function(){
+							This.index--;
+							if ( This.index<0 )This.index = This.length-1;
+						})
+					};	
+				};
+			};
+		};
+		
+		var banner2 = new Bannerchild({
+			aLi : aLi,
+			oTab : oTab,
+			aImg : aImg,
+			oPic : oPic,
+			oWrap : oWrap,
+			oBtn : oBtn,
+			aSpan : aSpan
+		});
+
+		//对象拷贝封装
+		function clone( obj ){
+			for (var i in obj )
+			{
+				if ( (typeof obj[i]).toLowerCase() == "object" )
+				{
+					this[i] = new clone(obj[i]);
+				}else{
+					this[i] = obj[i];
+				}
+			}
+		};
+	</script>
+ </body>
+</html>

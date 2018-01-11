@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>3d图片旋转特效</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <style type="text/css" id='css'>
+	#wrap{width:570px;height:420px;margin:50px auto;perspective:800px;}
+	#wrap #pic{width:100%;height:100%;}
+	#wrap #pic li{float:left;width:57px;height:100%;position:relative;transform-style:preserve-3d;transform-origin:center center -210px;}
+	#wrap #pic li a{position:absolute;width:100%;height:100%;}
+	#wrap #pic li a:nth-of-type(2){top:-100%;left:0;transform-origin:bottom;transform:rotatex(90deg);background-image:url(img/2.jpg);} 
+	#wrap #pic li a:nth-of-type(4){top:100%;left:0;transform-origin:top;transform:rotatex(-90deg);background-image:url(img/3.jpg);}
+	#wrap #pic li a:nth-of-type(3){top:0;left:0;transform:translatez(-420px) rotatex(180deg);background-image:url(img/4.jpg);}
+	#wrap #pic li a:nth-of-type(1){top:0;left:0;background-image:url(img/1.jpg);z-index:-1;}
+	#wrap #pic li a:nth-of-type(5){top:0;left:0;background-image:url(img/5.jpg);}
+	#wrap #tab{margin-top:70px;}
+	#wrap #tab li{float:left;font-size:12px;width:34px;height:34px;border-radius:100%;line-height:34px;text-align:center;background:#aaa;cursor:pointer;margin:0 3px;box-shadow:0 3px 3px #000;}
+	#wrap #tab li.active{background:#0033ff;}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<ul id="pic">
+			<!-- <li>
+				<a href=""></a>
+				<a href=""></a>
+				<a href=""></a>
+				<a href=""></a>
+			</li> -->
+		</ul>
+		<ol id="tab" class="clearfix">
+			<li class='active'>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ol>
+	</div>
+	<script type="text/javascript">
+		var oCss = document.getElementById('css');
+		var oUl = document.getElementById('pic');
+		var aTab = document.getElementById('tab').children;
+		var width = oUl.clientWidth;
+		var liW = 57;
+		var length = width/liW;
+		var html = "";
+		var zIndex = 0;
+		var inow = 0;
+		nowdate = 0;
+		for (var i=0;i<length ;i++ )
+		{
+			i<length/2?zIndex++:zIndex--;
+			html+='<li>'
+				+'<a href=""></a>'
+				+'<a href=""></a>'
+				+'<a href=""></a>'
+				+'<a href=""></a>'
+				+'<a href=""></a>'
+			+'</li>';
+			oCss.innerHTML += '#wrap #pic li:nth-of-type('+(i+1)+'){z-index:'+zIndex+';}';
+			oCss.innerHTML += '#wrap #pic li:nth-of-type('+(i+1)+ ') a{background-position:'+(-i*liW)+'px 0;}';
+			
+		};
+		oUl.innerHTML = html;
+		var aLi =document.getElementById('pic').children;
+		for (var i =0;i<aTab.length ;i++ )
+		{
+			aTab[i].index = i;
+			aTab[i].onclick=function(){
+				if ( new Date() - nowdate > 1000 )
+				{
+					nowdate = new Date();
+					aTab[inow].className = '';
+					inow = this.index;
+					for (var j=0;j<length ;j++ )
+					{
+						var aA = aLi[j].getElementsByTagName('a');
+						aLi[j].style.transition = '1s '+(j*50)+'ms';
+						if ( inow>3 )
+						{
+							aA[inow].style.zIndex = -1;
+							aA[inow%4].style.zIndex = -2;
+						}else{
+							for (var i=0;i<aA.length ;i++ )aA[i].style.zIndex = 1;
+							aA[aA.length-1].style.zIndex = -2;
+							aA[0].style.zIndex = -1;
+						};
+						aLi[j].style.transform = 'rotatex('+(inow*90)+'deg)';
+					}
+					aTab[inow].className = 'active';
+				};
+			};
+		};
+		
+	</script>
+ </body>
+</html>

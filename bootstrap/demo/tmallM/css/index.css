@@ -1,0 +1,442 @@
+/*reset*/
+* {
+  margin: 0;
+  padding: 0;
+}
+a,
+input,
+button {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-decoration: none;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+}
+li {
+  list-style: none;
+}
+html,
+body {
+  height: 100%;
+  font-family: 'Helvetica';
+  -webkit-text-size-adjust: 100%;
+}
+/*ͷ��*/
+#container {
+  height: 100%;
+  position: relative;
+}
+#container .con {
+  overflow: hidden;
+  background: #f0f0f0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#header {
+  position: absolute;
+  z-index: 999;
+  height: 1.11688312rem;
+  width: 100%;
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  background: linear-gradient(top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+}
+#header .mune {
+  width: 0.51948052rem;
+  height: 0.85714286rem;
+  padding-top: 0.25974026rem;
+  padding-left: 0.51948052rem;
+  float: left;
+}
+#header .mune a {
+  display: block;
+  width: 0.54545455rem;
+  height: 0.46753247rem;
+  background: url(../img/download.png);
+  background-size: 7.32467532rem 0.80519481rem;
+  background-position: 0 -0.12987013rem;
+}
+#header .login {
+  height: 100%;
+  margin-right: 0.51948052rem;
+  float: right;
+}
+#header .login a {
+  display: block;
+  line-height: 1.11688312rem;
+  height: 100%;
+  font-size: 0.28571429rem;
+  color: #fff;
+}
+#header .searchBox {
+  width: 6.88311688rem;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+#header .search {
+  width: 100%;
+  height: 0.85714286rem;
+  vertical-align: top;
+  margin-top: 0.1038961rem;
+  text-indent: 0.38961039rem;
+}
+#header .submit {
+  width: 0.85714286rem;
+  height: 0.85714286rem;
+  position: absolute;
+  right: 0;
+  top: 0.1038961rem;
+  background: url(../img/download.png);
+  background-size: 7.32467532rem 0.80519481rem;
+  background-position: -1.97402597rem 0rem;
+  background-color: #fff;
+}
+/*banner*/
+.banner {
+  height: 4.88311688rem;
+  position: relative;
+}
+.banner .pic {
+  height: 4.88311688rem;
+  width: 100%;
+}
+.banner .pic ul {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 4.88311688rem;
+}
+.banner .pic li {
+  height: 100%;
+  float: left;
+}
+.banner .pic li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.banner .pic li a img {
+  display: block;
+  width: 100%;
+  height: 4.88311688rem;
+}
+.banner .dot {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0.19480519rem;
+  text-align: center;
+  line-height: 0;
+}
+.banner .dot span {
+  width: 0.18181818rem;
+  height: 0.18181818rem;
+  background: rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 0.09090909rem;
+}
+.banner .dot span.active {
+  background: #f40;
+}
+/*������*/
+.module {
+  height: 3.94805195rem;
+  background: #fff;
+}
+.module ul {
+  height: 1.84415584rem;
+}
+.module ul li {
+  height: 100%;
+  width: 20%;
+  float: left;
+  text-align: center;
+}
+.module ul li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.module ul li img {
+  display: block;
+  width: 0.94805195rem;
+  height: 0.94805195rem;
+  margin: 0.1038961rem auto 0.25974026rem;
+}
+.module ul li span {
+  font-size: 0.23376623rem;
+  color: #333;
+  vertical-align: top;
+}
+/*hot*/
+.todayFocus {
+  height: 1.2987013rem;
+  background: #fff;
+}
+.todayFocus .hot {
+  width: 1.71428571rem;
+  height: 1.06493506rem;
+  border-right: 1px solid #e7e7e7;
+  float: left;
+}
+.todayFocus .hot a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.todayFocus .hot img {
+  width: 1.38961039rem;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+}
+.todayFocus .focus {
+  height: 100%;
+  width: 8.24675325rem;
+  float: left;
+}
+.todayFocus .focus .horn {
+  width: 0.77922078rem;
+  height: 0.77922078rem;
+  float: left;
+  margin: 0.14285714rem 0.25974026rem 0;
+}
+.todayFocus .focus .horn img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.todayFocus .focus .focusCon {
+  width: 6.94805195rem;
+  height: 1.06493506rem;
+  float: left;
+  overflow: hidden;
+}
+.todayFocus .focus .focusList,
+.todayFocus .focus .focusList ul {
+  height: 100%;
+}
+.todayFocus .focus .focusList li {
+  width: 100%;
+  height: 100%;
+  line-height: 0.53246753rem;
+}
+.todayFocus .focus .focusList li a span {
+  display: block;
+  font-size: 0.28571429rem;
+}
+.todayFocus .focus .focusList li a span:nth-of-type(1) {
+  color: #333;
+}
+.todayFocus .focus .focusList li a span:nth-of-type(2) {
+  color: #f60;
+}
+/*����*/
+.pub-css .title {
+  height: 0.80519481rem;
+  color: #f60;
+}
+.pub-css .title h2 {
+  height: 100%;
+  width: 1.07792208rem;
+  padding-left: 0.68831169rem;
+  margin: 0 auto;
+  font-size: 0.36363636rem;
+  font-weight: normal;
+  line-height: 0.80519481rem;
+  background: url(../img/buy.webp) no-repeat 0 center;
+  background-size: 0.42857143rem 0.50649351rem;
+  position: relative;
+}
+.pub-css .title h2:before,
+.pub-css .title h2:after {
+  content: '';
+  width: 0.85714286rem;
+  height: 0.02597403rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #F6B7B7;
+}
+.pub-css .title h2:before {
+  margin-left: -2.15584416rem;
+}
+.pub-css .title h2:after {
+  margin-left: 1.07792208rem;
+}
+.buy .buyList ul {
+  height: 7.37662338rem;
+}
+.buy .buyList ul li {
+  height: 3.68831169rem;
+  float: left;
+  width: 25%;
+  text-align: center;
+  background: #fff;
+  border-right: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  box-sizing: border-box;
+}
+.buy .buyList ul li div.buyTitle {
+  height: 0.64935065rem;
+  line-height: 0.64935065rem;
+}
+.buy .buyList ul li div.buyTitle em {
+  font-style: normal;
+  color: #333;
+  font-size: 0.28571429rem;
+  vertical-align: top;
+}
+.buy .buyList ul li img {
+  width: 2.07792208rem;
+  height: 2.07792208rem;
+  display: block;
+  margin: 0 auto;
+}
+.buy .buyList ul li p.price {
+  height: 0.80519481rem;
+  line-height: 0.80519481rem;
+}
+.buy .buyList ul li p.price span {
+  font-size: 0.33766234rem;
+  vertical-align: middle;
+}
+.buy .buyList ul li p.price span:nth-of-type(1) {
+  float: left;
+  color: #f60;
+  margin-left: 0.25974026rem;
+}
+.buy .buyList ul li p.price span:nth-of-type(2) {
+  float: right;
+  color: #bbb;
+  margin-right: 0.25974026rem;
+  text-decoration: line-through;
+}
+/*brandSale*/
+.brandSale .title h2 {
+  width: 1.45454545rem;
+}
+.brandSale .title h2:after {
+  margin-left: 1.33766234rem;
+}
+.brandSale .sale ul {
+  height: 2.93506494rem;
+}
+.brandSale ul li {
+  height: 100%;
+  width: 50%;
+  float: left;
+}
+.brandSale ul li a {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+/*brandAsk*/
+.brandInfo .title h2 {
+  width: 1.45454545rem;
+}
+.brandInfo .title h2:after {
+  margin-left: 1.33766234rem;
+}
+.brandInfo .info {
+  height: 4.67532468rem;
+}
+.brandInfo ul {
+  height: 4.67532468rem;
+  display: flex;
+}
+.brandInfo ul li {
+  flex: 1;
+}
+.brandInfo ul li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.limit ul {
+  height: 3.93506494rem;
+  display: flex;
+}
+.limit ul li {
+  flex: 1;
+}
+.limit ul li:nth-of-type(1) {
+  height: 100%;
+  flex: 4.41558442rem;
+  margin-right: 1px;
+}
+.limit ul li:nth-of-type(2) {
+  flex: 5.55844156rem;
+  height: 100%;
+  box-sizing: border-box;
+}
+.limit .title h2 {
+  width: 1.45454545rem;
+}
+.limit .title h2:after {
+  margin-left: 1.33766234rem;
+}
+.limit ul li:nth-of-type(2) a {
+  display: block;
+  width: 5.55844156rem;
+  height: 1.94805195rem;
+  margin-bottom: 1px;
+}
+/*����ϲ��*/
+.like .title h2 {
+  width: 1.45454545rem;
+}
+.like .title h2:after {
+  margin-left: 1.33766234rem;
+}
+.like .likeCon .detail {
+  width: 50%;
+  height: 6.62337662rem;
+  float: left;
+  background: #fff;
+  margin-bottom: 4px;
+  box-sizing: border-box;
+}
+.like .likeCon .detail:nth-of-type(odd) {
+  border-right: 4px solid #f0f0f0;
+}
+.like .likeCon .detail a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.like .likeCon .detail div.img {
+  width: 100%;
+  height: 4.81818182rem;
+}
+.like .likeCon .detail div.des {
+  width: 100%;
+  height: 1.03896104rem;
+  overflow: hidden;
+}
+.like .likeCon .detail div.des em {
+  display: block;
+  margin: 0.1038961rem;
+  height: 0.83116883rem;
+  font-style: normal;
+  font-size: 0.38961039rem;
+  vertical-align: top;
+  color: #666;
+}
+.like .likeCon .detail div.price {
+  height: 0.55844156rem;
+  padding: 0.1038961rem;
+  font-size: 0;
+}
+.like .likeCon .detail div.price span {
+  margin-right: 0.1038961rem;
+  color: #dd2727;
+  font-size: 0.28571429rem;
+}
+.like .likeCon .detail div.price span:nth-of-type(2) {
+  font-size: 0.38961039rem;
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>弹性盒模型</title>
+ </head>
+ <body>
+	<div style="color:gold;line-height:2;">
+	<p>box-shadow:x偏移量 y偏移量 扩散程度（可省） 宽度（可省） 颜色 inset/outset(扩散方向)</p>
+<h3>弹性盒模型：兼容ie10及以上</h3>
+	display：flex；给父级元素<br />
+	flex：num ；给子元素；进行大小布局<br />
+
+<h4>flex:a b c</h4>
+	a:一个数字，宽度如何扩展，可用附属属性flex-grow代替<br />
+	b:一个数字，宽度如何收缩，可用附属属性flex-shrink代替<br />
+	c:带单位的值，具体的项目长度，可用附属属性flex-basis代替<br />
+
+	flex:auto 同 flex:1 1 auto<br />
+	flex:none 同 flex:0 0 auto<br />
+	flex:initial 同 flex:0 1 auto<br />
+<h4>flex-direction:给子元素排序 设置给父元素</h4>
+	row //默认left to right<br />
+	column //up to down<br />
+	row-reverse //right to left<br />
+	column-reverse //down to up<br />
+<h4>order</h4> 数字，规定子元素排列顺序 越低排名越前<br />
+<h4>flex-wrap:</h4><p style="display:inline-block;">设置给父元素 当子元素宽度超过父元素 规定是否溢出需要子元素flex：none</p><br />
+	nowrap 不换行 默认<br />
+	wrap 换行<br />
+	wrap-reverse 反序换行<br />
+<h4>justify-content:设置给父元素</h4>
+	flex-start //默认 从左至右<br />
+	flex-end //从右至左 贴边 顺序并不改变<br />
+	center //整体居中<br />
+	space-between //两端无间隙，中间间隙平均分配<br />
+	space-around //所有间隙平均分配
+	</div>
+ </body>
+</html>

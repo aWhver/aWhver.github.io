@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	div{line-height:2;}
+  </style>
+ </head>
+ <body>
+	<div style="color:gold;margin-left:60px;">
+		
+				<strong>一、函数的定义：</strong><br />
+		<div style='padding:30px;'>
+			<font>1.匿名函数</font><br />
+				function（）{}   不能单独写，会报错<br />
+			<font>2.有名函数</font><br />
+				function fn(){}<br />
+
+			调用：fn（）；自执行<br />
+		</div>
+
+<strong>二、函数表达式:</strong><br />
+		<div style='padding:30px;'>
+			符号：~ - + （）<br />
+			例如：（function（）{}）    ~function（）{}<br />
+			var a = function（）{} （）；第二个括号表示执行<br />
+			
+			<font>意义：</font><br />
+				1.节省变量<br />
+				2.让函数内部的代码模块化，即内部代码独立<br />
+				可以用外面的东西，外面的不能用里面的<br />
+		</div>
+<strong>三、函数定义与表达式区别：</strong><br />
+	<p>函数<strong>表达式</strong>可以加括号自执行</p><br />
+
+
+<strong>四、函数参数：</strong><br />
+		<div style='padding:30px;'>
+			6种数据类型都可以传递<br />
+			fn（50,40）// 实参  括号里面的<br />
+			function fn（a，b）{ } //形参<br />
+			匿名函数可以当参数传<br />
+			
+			不定参：存放所有实参的集合 可以和形参并存 类数组<br />
+
+			charAt(num); 找到字符串中的某一个位置<br />
+
+			fn（a,b,c,d,e）<br />
+
+			function fn(){<br />
+				//不定参 arguments<br />
+				var sum=0;<br />
+				for(var i=0;i&lt arguments.length;i++)<br />
+				{<br />
+				sum += arguments[i]	<br />
+				}<br />
+				alert(sum);<br />
+			}
+		</div>
+	</div>
+ </body>
+</html>

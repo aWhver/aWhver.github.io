@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>评论关键字屏蔽</title>
+  <style type="text/css">
+  *{margin:0;padding:0;}
+	#wrap{
+		width:500px;
+		height:100px;
+		border:1px solid #ccc;
+		margin:10px auto;
+		position:relative;
+	}
+	#wrap p{
+		text-align:right;
+	}
+	#send{
+		background:#3366ff;
+		padding:3px 5px;
+		color:#fff;
+		cursor:pointer;
+		position:absolute;
+		right:3px;
+		bottom:3px;
+	}
+	#txt{
+		padding:5px;
+		width:490px;
+		height:90px;
+		border:none;
+		resize:none;
+	}
+	#con{
+		width:500px;
+		margin:10px auto;
+	}
+	#con li{list-style:none;
+		border-top:1px solid #ccc;
+		padding:10px;
+		position:relative;
+	}
+	#con p{
+		margin:5px;
+		white-space:pre-wrap;
+	}
+	#con .user{
+		font-size:14px;
+		color:#66cccc;
+		padding:5px;
+		}
+	#con .time{
+		color:#aaa;
+		padding:5px;
+	}
+	#con .del{
+		color:#777;
+		position:absolute;
+		top:13px;
+		right:0px;
+		cursor:pointer;
+	}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<textarea name="" id="txt" cols="30" rows="10"></textarea>
+		<p><span id="send">发布</span></p>
+	</div>
+	<div id="con">
+		<ul id="list">
+			<!-- <li>
+				<span class="user">匿名用户</span><span class="time">101212</span>
+				<p>留言板</p>
+				<span class="del">删除</span>
+			</li>
+			 -->
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var oTxt=document.getElementById("txt");
+		var oSend=document.getElementById("send");
+		var oList=document.getElementById("list");
+		
+		var reg=/垃(\.|\~|\\|\!|\#|\$|\%|\^|\&|\*|\(|\)|\|\s)*圾|菜(\.|\~|\\|\!|\#|\$|\%|\^|\&|\*|\(|\)|\|\s)*逼|你大(\.|\~|\\|\!|\#|\$|\%|\^|\&|\*|\(|\)|\|\s)*爷的|你(\.|\~|\\|\!|\#|\$|\%|\^|\&|\*|\(|\)|\|\s)*妈|傻(\.|\~|\\|\!|\#|\$|\%|\^|\&|\*|\(|\)|\|\s)*逼|滚|操|sb|智(\.|\~|\\|\!|\#|\$|\%|\^|\&|\*|\(|\)|\|\s)*障/g;
+		oSend.onclick=function(){
+			var time=new Date();
+			var inne=oTxt.value;
+			var date=new Date();
+			
+			var yy=date.getFullYear();
+			//alert(yy);
+			var MM=date.getMonth()+1;
+			var dd=date.getDate();
+			var hh=date.getHours();
+			var mm=date.getMinutes();
+			var ss=date.getSeconds();
+			if (MM<10)MM="0"+MM;
+			if (dd<10)dd="0"+dd;
+			if (hh<10)hh="0"+hh;
+			if (mm<10)mm="0"+mm;
+			if ((ss+"").length==1)ss="0"+ss;
+			
+			var s=yy+"-"+MM+"-"+dd+" "+hh+":"+mm+":"+ss;
+			if (inne)
+			{
+				oTxt.value="";
+				inne=inne.toLowerCase();
+				if (reg.test(inne))
+				{
+					str="";
+					inne=inne.replace(reg,function($0){
+						for (var i=0;i<$0.length ; i++)
+						{
+							str += "*";
+						}
+						return str;
+					});
+				}
+				var oLi=document.createElement("li");
+				var oSpan=document.createElement("span");
+				oLi.innerHTML="<span class='user'>匿名用户</span><span class='time'>"+s+"</span><p>"+inne+"</p>";
+				oSpan.className="del";
+				oSpan.innerHTML="删除";
+				oLi.appendChild(oSpan);
+				oList.insertBefore(oLi,oList.children[0]);
+				
+				oSpan.onclick=function(){
+					this.parentNode.parentNode.removeChild(this.parentNode);
+				};
+			}
+		};
+		
+	</script>
+ </body>
+</html>

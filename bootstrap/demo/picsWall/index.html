@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en" onselectstart="return false">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>照片墙</title>
+  <style type="text/css">
+	*{margin:0;padding:0}
+	li{list-style:none;}
+	body,html{height:100%;}
+	#wrap{
+		position:absolute;
+		left:5%;
+		top:5%;
+		height:90%;
+		width:90%;
+	}
+	#wrap ul li{
+		position:absolute;
+		width:125px;
+		height:125px;
+		border:1px solid #eee;
+		transition:left 1s,top 1s;
+	}
+	#wrap ul li img{transform:scale(0.93);transition:transform 1s;}
+	#btn span{
+		position:fixed;
+		top:50%;
+		margin-top:-30px;
+		width:30px;
+		height:60px;
+		color:#fff;
+		background:rgba(0,0,0,.5);
+		font-size:30px;
+		line-height:60px;
+		text-align:center;
+		cursor:pointer;
+		display:none;
+	}
+	#btn span.left{left:0;}
+	#btn span.right{right:0;}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<ul></ul>
+		<div id="btn">
+			<span class="left"> < </span>
+			<span class="right"> > </span>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var $wrap = $("#wrap");
+			var index=0;
+			var $wrapul = $('#wrap ul');
+			var $btn = $('#btn span');
+			var $li,$img;
+			var liTime = 0;
+			var btnTime = 0;
+			var onOff=true;
+			init();
+			$li = $('#wrap ul li');
+			$img = $('#wrap ul li img');
+			liPosition();
+			liRotate();
+			$(window).resize(liPosition);
+			
+			$li.click(function(){
+				if ( new Date() - liTime >2000)
+				{
+					liTime = new Date();
+					if ( onOff )
+					{
+						index = $(this).index();
+						$img.css('transform','scale(1)');
+						setTimeout(function(){
+							liClick();
+							$img.fadeOut(1000);
+							$li.css("background-image","url(img/big/"+ (index+1) +".jpg)")
+						},1000);
+						$btn.show();
+						$(window).off('resize').resize(liClick);
+						onOff=!onOff;
+					}else{
+						$img.fadeIn(1000,function(){
+							$li.css("backgroundImage","");
+							$(this).css('transform','scale(0.93)');
+						});
+						liPosition();
+						liRotate();
+						$(window).off('resize').resize(liPosition);
+						$btn.hide();
+						onOff=!onOff;
+					};
+				};
+			});
+			//点击左右按钮切换
+			$btn.click(function(){
+				if ( new Date() - btnTime > 1300 )
+				{
+					btnTime = new Date();
+					var i = $(this).index();
+					if ( i )
+					{
+						index++;
+						index%=$li.length;
+					}else{
+						index--;
+						if ( index<0 )index=$li.length-1;
+					};
+					lipic();
+				};
+			});
+			//li随机逐个出现
+			function lipic(){
+				var arr=[];
+				for (var i=0;i<$li.length ;i++ )
+				{
+					arr[i]=i;
+				};
+				var timer = setInterval(function(){
+					var a = Math.floor(Math.random()*arr.length);
+					$li.eq(arr[a]).css("backgroundImage","url(img/big/"+ (index+1) +".jpg)");
+					arr.splice(a,1);
+					if ( !arr.length )
+					{
+						clearInterval(timer);
+					};
+				},50);
+			};
+			//li点击变大图
+			function liClick(){
+				var wrapW = $wrap.width();
+				var wrapH = $wrap.height();
+				var left = (wrapW - 750)/2;
+				var top = (wrapH - 500)/2;
+				$li.each(function(i){
+					var ix = i%6;
+					var iy = parseInt(i/6);
+					$(this).css({
+						left: left+125*ix + 'px',
+						top: top+125*iy + 'px',
+						transition: 'transform 1s ,left 1s , top 1s',
+						transform: 'rotate(0deg)'
+					});
+				});
+			};
+			//创建li插入图片
+			function init(){
+				for (var i=0;i<24 ;i++ )
+				{
+					$li = $('<li><img src="img/'+(i+1)+'.jpg"></img></li>');
+					$wrapul.append($li);
+				};
+			};
+			//li定位
+			function liPosition(){
+				var liw = $li.width();
+				var lih = $li.height();
+				var wrapw = $wrap.width();
+				var wraph = $wrap.height();
+				var m = (wrapw - liw*6)/5;
+				var n = (wraph - lih*4)/3;
+				$li.each(function(i){
+					var ix = i%6;
+					var iy = parseInt(i/6);
+					$(this).css({
+						left: ix*(liw+m) + 'px',
+						top: iy*(lih+n) + 'px',
+						backgroundPosition: (-ix*liw)+'px '+	(-iy*lih)+'px'
+					});
+				});
+			};
+			//图片旋转
+			function liRotate(){
+				$li.each(function(i){
+					var r = (Math.random()-0.5)*30;
+					$(this).css("transform","rotate("+ r +"deg)");
+				});
+			};
+		});
+	</script>
+ </body>
+</html>

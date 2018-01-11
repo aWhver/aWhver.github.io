@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>H5 loading</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:#000;}
+	#wrap{width:452px;height:152px;margin:200px auto;border:1px solid #999;}
+	#wrap > div{width:150px;height:150px;border-right:1px solid #999;float:left;}
+	#wrap > div:nth-child(3){border:none;}
+	/*loading1*/
+	.box1 .loading{font-size:30px;width:0.2em;height:0.7em;margin:2em auto;background:#fff;position:relative;animation:up 1.5s 0.16s ease-in-out infinite;}
+	.box1 .loading:before,.box1 .loading:after{width:0.2em;height:0.7em;position:absolute;background:#fff;content:'';animation:up 1.5s ease-in-out infinite;}
+	.box1 .loading:before{left:-0.4em;}
+	.box1 .loading:after{left:0.4em;animation-delay:0.32s;}
+	@keyframes up{
+		0%{box-shadow:0 0 0 #fff;}
+		40%{box-shadow:0 10px 0px #fff,0 -10px 0px #fff;}
+		100%{box-shadow:0 0 0 #fff;}
+	}
+	/*loading2*/
+	.box2 .loading{box-shadow:-0.11em -0.6em 0 -0.40em #fff,
+			-0.32em -0.64em 0 -0.42em #fff,
+			-0.47em -0.52em 0 -0.44em #fff,
+			-0.56em -0.43em 0 -0.46em #fff,
+			-0.61em -0.33em 0 -0.48em #fff;font-size:90px;width:1em;height:1em;margin:0.3em auto;border-radius:100%;animation:rotate 2s ease-in-out infinite;}
+	@keyframes rotate{
+		0%{
+			transform:rotatez(0deg);
+			box-shadow:-0.11em -0.6em 0 -0.40em #fff,
+			-0.11em -0.6em 0 -0.42em #fff,
+			-0.11em -0.6em 0 -0.44em #fff,
+			-0.11em -0.6em 0 -0.46em #fff,
+			-0.11em -0.6em 0 -0.48em #fff,
+		}
+		50%{
+			box-shadow:-0.11em -0.6em 0 -0.40em #fff,
+			-0.32em -0.54em 0 -0.42em #fff,
+			-0.47em -0.42em 0 -0.44em #fff,
+			-0.56em -0.33em 0 -0.46em #fff,
+			-0.61em -0.23em 0 -0.48em #fff;
+		}
+		100%{
+			transform:rotatez(360deg);
+			box-shadow:-0.11em -0.6em 0 -0.40em #fff,
+			-0.11em -0.6em 0 -0.42em #fff,
+			-0.11em -0.6em 0 -0.44em #fff,
+			-0.11em -0.6em 0 -0.46em #fff,
+			-0.11em -0.6em 0 -0.48em #fff
+		}
+	}
+	/*loading3*/
+	.box3 .loading{font-size:10px;width:4em;height:4em;border-radius:100%;margin:3.5em auto;border:1em solid rgba(255,255,255,.2);border-left:1em solid #fff;animation:circle 1s linear infinite;}
+	@keyframes circle{
+		0%{transform:rotatez(0deg);}
+		50%{transform:rotatez(180deg);}
+		100%{transform:rotatez(360deg);}
+	}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<div class="box1">
+			<div class="loading"></div>
+		</div>
+		<div class="box2">
+			<div class="loading"></div>
+		</div>
+		<div class="box3">
+			<div class="loading"></div>
+		</div>
+	</div>
+ </body>
+</html>

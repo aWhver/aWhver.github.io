@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>please enter your title</title>
+  <style type="text/css">
+	p{margin-left:32px;}
+  </style>
+ </head>
+ <body>
+	<div style="color:gold">
+		<h3>canvas标签：</h3>
+			能运用css样式；默认宽高350*150;标签本身没有画图功能，全部靠js
+
+		<p><h3>CanvasRenderingContext2D</h3> //2D绘制对象 是完成canvas画图的对象</p>
+			<div style="margin-left:32px;">
+				moveTo(x,y)  将画笔坐标置于某点<br />
+				lineTo(x,y)  将画笔移动到某点，并画出一条线的路径线线显示<br />
+				stroke()  画线，线显示<br />
+				beginPath()  开始绘图 必须有<br />
+				closePath()  终点和起点连起来，坐标在起点<br />
+				strokeStyle  线的颜色<br />
+				lineWidth  线宽 不需要单位<br />
+				lineJoin  交点处的样式 miter 默认 bevel 斜角 round 圆角<br />
+				lineCap  规定2端样式 round 圆角 butt 默认 square 平角 不能有closePath<br />
+			</div>
+		<h3>文字样式</h3>
+			<p>font ：粗细 大小 字体</p>
+			<p>fillText 写实心文字 （内容，x，y）</p>
+			<p>strokeText 空心文字	（内容，x，y）</p>
+		<h3>渐变</h3>
+			<p>var lin = context.createLinearGradient(x,y,w,h)；//方向 线性渐变</p>
+				<p>lin.addColorStop(0-1,颜色 );</p>
+			<p>lin的值给fillStyle</p>
+			<p>var rad = context.createRadialGradient()</p>
+		<h3>图片，背景图片</h3>
+			<p>图片 drawImage(图片对象，x,y,w,h)</p>
+			<p>背景 createPattern(图片对象,平铺||不平铺)</p>
+		<h3>缩放</h3>
+			<p>scale(x,y)//缩放的是整个画布，但本身宽高没变，只是缩紧了</p>
+			<p>save()//保存状态</p>
+			<p>restore()//恢复状态</p>
+		<h3>位移</h3>
+			<p>translate(x,y)//改变原始坐标 需保存和恢复状态 旋转同理</p>
+		<h3>贝塞尔曲线</h3>
+			<p>quadraticCurveTo(x,y,x,y) 2个点</p>
+			<p>bezierCurveTo(x,y,x,y,x,y) 3个点</p>
+		<h3>剪切</h3>
+			<p>rect(x,y,w,h)</p>
+			<p>clip() //画的东西不会超出这个区域</p>
+		<h3>画图的叠加部分显示</h3>
+			<div style="margin-left:32px;">
+				<h4>globalCompositeOperation:</h4>
+					source-over //新盖旧  默认<br />
+					destination-over // 旧盖新<br />
+					source-atop //只显示旧图和旧图盖住新图的部分<br />
+					destination-atop //只显示新图和新图和旧图重叠部分 <br />
+					source-in //只显示新图（新图和旧图重叠部分的新图）<br /> 
+					destination-in //只显示旧图（新图和旧图重叠部分的旧图）<br />
+					source-out //只显示新图（新图和旧图不重叠部分的新图） <br />
+					destination-out //只显示旧图（新图和旧图不重叠部分的旧图）<br />
+					lighter //着色 重叠部分<br />
+					xor //透明 重叠部分<br />
+					copy //只显示新图<br />
+			</div>
+		<h3>DataImage</h3>
+			<p>.toDataURL();// canvas里的一个方法 直接获取地址</p>
+			<p>.getDataImage(x,y,w,h) 获取颜色像素点 </p>
+			<p>.createImageData(w,h)</p>
+			<p>.putImageData(.createImageData的对象，x,y)	</p>									
+	</div>
+ </body>
+</html>

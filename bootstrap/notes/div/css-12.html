@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+ <div style='color:gold;line-height:1.8;margin-left:150px;'>
+ <h4> 一、p、dt、h标签不能嵌套块级</h4>
+
+<h4>二、ie6下最小高度问题</h4>
+<p>ie6下高度小于19px，会被当成19px来处理</p>
+<span style='font-weight:600;'>解决方法：</span>
+	  1.overflow：hidden；<br />
+	  2.font-size：0px；（有2px）overflow：hidden；<br />
+
+<h4>三、border</h4>
+ie下dotted 1px不支持，会变成虚线<br />
+<span style='font-weight:600;'>解决方法：</span>ps切背景图平铺<br />
+
+<h4>四、ie6下解决margin的传递，要触发haslayout</h4>
+
+<p>1.float；</p>
+<p>2.overflow：hidden；zoom：1；</p>
+<p>3.border+zoom</p>
+ie6下父级有边框，子元素margin消失，<span style='font-weight:600;'>解决方法：</span>zoom：1<br />
+
+<h4>五、ie下双倍边距 对内嵌元素没影响</h4>
+ie下块元素有浮动和横向的margin，横向的margin值放大至2倍<br />
+margin-left:一行左边第一个元素有双边距（右同理）<br />
+<span style='font-weight:600;'>解决方法：</span>display：inline；<br />
+
+当一行子元素占有的宽度之和和父级宽度相差超过3px或者又不满行，<br />
+最后一行子元素的下margin在ie6下消失<br />
+
+ie6下 元素下margin失效解决方法：父级给overflow:hidden;或者zoom:1 <br />
+
+<h4>六、浮动问题</h4>
+  
+1.计算要精准，不要内容宽度超出设置好的宽度<br />
+ie6下，内容会撑开设置好的宽度<br />
+2.ie6下元素浮动，如果宽度需要内容撑开的话，就给内容浮动<br />
+3.ie6、7下元素要通过浮动并在一行，就要给这行元素都要加浮动，<br />
+用margin会产生3px偏差<br />
+4.ie6、7下li本身没浮动，但内容有浮动，li外下面就会有间隙<br />
+	<span style='font-weight:600;'>解决方法：</span><br />
+	<p>① 给父级li元素加浮动	</p>
+
+	<p>② 父级li添加vertical-align：top；</p>
+
+	<p>③当ie6下最小高度问题和li间隙问题共存时。父级li浮动，
+overflow：hidden；</p>
+
+5.ie6下文字溢出问题。2个浮动子元素之间有注释和内嵌元素会出现<br />
+
+<span style='font-weight:600;'>解决方法：</span>用div内嵌或内嵌元素包起来
+</div>
+ </body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>please enter your title</title>
+  <style type="text/css">
+	p{margin-left:32px;}
+  </style>
+ </head>
+ <body>
+	<div style="color:gold">
+		<h3>面向对象：</h3>
+			一种开发模式,
+			所有的东西从对象出发
+		<h3>在函数执行之前加new关键字：</h3>
+			<p>1.函数的内部会自动产生一个新对象</p>
+			<p>2.函数内部的this指向这个对象</p>
+			<p>3.函数默认返回这个对象</p>
+
+		<h3>=的作用：</h3>
+			<p>赋值：基础数据类型</p>
+			<p>引用：对象、函数</p>
+		<h3>原型：prototype</h3>
+			<p>只有构造函数有原型  构造函数.prototype</p>	
+		<h3>在写面向对象的时候注意：</h3>
+			<p>私有的属性/方法，放在构造函数里</p>
+			<p>公有的属性/方法，放在原型里</p>
+
+		<div>instanceof :检测对象与构造函数在原型链上是否有关系</div>
+			<p>function fn(){};</p>
+			<p>var a = new fn();</p>
+			<p>a instanceof fn   //true / false</p>
+		hasOwnProperty()  检测对象自身下的属性
+
+
+		<h3>包装对象：</h3>
+			<p>基础数据类型都有包装对象，不能存值</p>
+			<p>当某个基础类型在进行 . 操作的时候，会由他的包装对象来代替操作</p>
+			<p>完成之后，包装对象消失</p>
+			<p>每一次找的包装对象不一样</p>
+		<h3>原型链：就近原则</h3>
+			<p>描述对象和原型之间的关系</p>
+		<h3>继承：</h3>
+			<p>1.儿子继承爸爸</p>
+			<p>2.儿子的改动不影响爸爸</p>
+	</div>
+ </body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>知识点</title>
+  <style>
+div{line-height:1.8;
+	color:gold;#330066;}	
+  </style>
+ </head>
+ <body>
+<div id='pre'>
+	<h3>1、定义与格式化文本</h3>    <br/>
+		&lt pre&gt &lt/pre&gt <br/>
+	   作用：保持文本原有的格式
+
+</div>
+<div id='marquee'>
+  <h3>2创建文本移动标记-marquee</h3>     了解知识点 ：现在已经被w3c抛弃  代码多  没有语义<br/>
+    
+   a1、默认向方向 direction="left"    right右  down下  up上  来回走alernate<br/>
+
+   a2、文本背景颜色  bgcolor="red"<br/>
+
+   a3、scroll 单方向滚动 默认向左<br/>
+   
+   a4、loop 循环次数  loop="自定义次数"  如果true 无限循环<br/>
+
+   a5、scrollAmount="速度值"  文本速度值<br/>
+
+   a6、鼠标移入onmouseover 停止 onmouseover=this(指的是marquee当前标记).stop() 停止<br/>
+
+          鼠标移入marquee让它自己停止动画<br/>
+
+   a7、鼠标移出onmouseout  在执行动画 动起来  onmouseout=this.start()  开始动<br/>
+</div>
+<div id='text'>
+  <h3>3文本域标记</h3>   &lt textarea&gt &lt/textarea&gt<br/>
+
+   作用：1、文本输入         input type="text"(信息 密码账号 )也可以<br/>
+         
+         2、存储数据<br/>
+
+        控制输入文本域大小： &lt textarea rows="400" cols="400"&gt  不是像素<br/>
+                            rows 高度== 行合并<br/>
+ 			    cols  宽度=  列合并 <br/>
+                             
+                            实际大小 字体大小字数*400<br/>
+
+      默认情况下<br/> 
+		a1、resize 可以拖动  如需要禁止 在CSS样式里面添加  resize:none;<br/>
+
+                a2、默认可以输入内容 disabled="true"  禁止输入内容disabled="false"<br/>
+
+               a3、输入内容只读状态 readonly <br/> 
+
+
+       div 也可以编辑状态  用到html5  contenteditable <br/> 
+
+
+     输入状态有焦点  js里面的   focus 获取  change 修改文本内容 触发<br/>
+
+	按tab  输入域的遍历顺序   tabindex	<br/>
+</div>
+<div id='img'>
+<h3>4、图片标记</h3>
+   img    src="图片地址"  alt="seo 方便搜索引擎抓取"<br/>
+
+   图片标记后边跟了文字  图片后边文字处于中间位置<br/>   
+
+   algin="" 对齐方式 <br/>
+
+   a1、居中absmiddle   a2、right图片右对齐   a3.left图片右对齐<br/>
+
+   width  自定义压缩图片宽度<br/>
+
+   height  自定义压缩图片高度<br/>
+
+</div>
+<div id='a'>
+<h3>5、 超链接标签</h3>  &lt a href="跳转页面的地址" target="跳转窗口"&gt&lt/a&gt<br/>
+
+     跳转窗口 默认 target="_self" 本页面窗口打开   target="_blank" 新窗口<br/>
+
+     a  锚点    第一创建锚点    name="锚点名字"   id="名字"<br/>
+
+     a标记导航锚点  #锚点名字<br/>
+
+</div>
+<div id='iframe'>
+<h3>6、内联框架</h3>
+    内联：例子  &lt div&gt &lt iframe src="加载内容的路径" frameborder="1"&gt &lt/iframe&gt &lt/div&gt<br/>
+                        src 框架加载的内容路径                frameborder 框架的边框<br/>
+   
+    外部链接   本地图片 网页都可以<br/>
+   
+    优点; a  导入第三方内容 加载速度较快速<br/>
+            b  安全性强<br/>
+            c  加载脚本<br/>
+
+    缺点    a iframe会阻塞主页面的Onload事件<br/>
+	    b. 即时内容为空，加载也需要时间<br/>
+	    c. 没有语意 
+ </div>    
+
+ </body>
+</html>

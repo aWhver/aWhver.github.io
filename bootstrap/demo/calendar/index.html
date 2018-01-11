@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en"onselectstart='return false'>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>please enter your title</title>
+  <style type="text/css">
+	*{margin:0;padding:0}
+	#box{width:550px;height:380px;margin:30px auto;border-radius:5px;box-shadow:0 0 12px #ddd;overflow:hidden;}
+	#box .title{width:100%;height:60px;text-align:center;background:#6666ff;}
+	#box .title div{cursor:pointer;color:#fff;display:inline-block;width:30px;height:30px;font-size:20px;font-weight:bold;line-height:30px;border-radius:5px;}
+	#box .title div:hover{background:#fff;color:#797979;}
+	#box h2{display:inline-block;color:#fff;font-size:40px;height:60px;}
+	#box .title span{margin:0 10px;display:inline-block;height:60px;line-height:60px;}
+	#box .date{width:100%;height:320px;}
+	#box .date p{width:510px;padding-left:40px;height:40px;}
+	#box .date p span{margin-right:22px;display:inline-block;width:40px;height:40px;font-size:26px;text-align:center;line-height:40px;}
+	#box .date li{width:510px;padding-left:40px;height:40px;margin:5px auto;line-height:40px;}
+	#box .date li span{border-radius:5px;margin-right:30px;display:inline-block;width:40px;height:29px;font-size:26px;text-align:center;line-height:29px;}
+	#box .date li span:hover{background:#58c9f3;cursor:pointer;color:#fff;}
+	#box .date li span.now{background:#58c9f3;}
+  </style>
+ </head>
+ <body>
+	<div id="box">
+		<div class="title">
+			<div class="left btn"> < </div>
+			<h2><span id='month'></span><span id='year'></span></h2>
+			<div class="right btn"> > </div>
+		</div>
+		<div class="date">
+			<p>
+					<span>S</span>
+					<span>M</span>
+					<span>T</span>
+					<span>W</span>
+					<span>T</span>
+					<span>F</span>
+					<span>S</span>
+			</p>
+			<ul>
+				
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var tM = document.getElementById('month');
+		var tY = document.getElementById('year');
+		var changeMonth = document.getElementsByClassName('btn');
+		var aSpan,oDate,oUl;
+		date();
+		var valM = tM.innerText;
+		var valY = tY.innerText;
+		//点击按钮切换日历
+		for (var i=0;i<changeMonth.length ;i++ )
+		{
+			changeMonth[i].index=i;
+			changeMonth[i].onclick=function(){
+				var year = valY;
+				var month = valM;
+				var day = new Date(year,month,1).getDate();
+				if ( this.index )
+				{
+					valM++;
+					if ( valM > 12 )
+					{
+						valY++;
+						valM=1;
+					}
+					time();
+				}else{
+					valM--;
+					if ( valM == 0 )
+					{
+						valY--;
+						valM=12;
+					}
+					time();
+				}
+			};
+		};
+		//日历初始化
+		function date(){
+			//获取当前时间
+			var nowDate = new Date();
+			var year = nowDate.getFullYear();
+			var month = nowDate.getMonth();
+			var date = nowDate.getDate();
+			//获取当前时间一号的星期数
+			var day = new Date(year,month,1).getDay();
+			tM.innerHTML = month+1;
+			tY.innerHTML = year;
+	
+			/*创建存放时间的元素*/
+			oDate = document.getElementsByClassName('date')[0];
+			oUl = oDate.children[1];
+			for (var i=0;i<6 ;i++ )
+			{
+				var oLi = document.createElement('li');
+				for (var j=0;j<7 ;j++ )
+				{
+					var oSpan = document.createElement('span');
+						oLi.appendChild(oSpan);
+				}
+				oUl.appendChild(oLi);
+			}
+			aSpan = oUl.getElementsByTagName('span');
+			//编制日历
+			for (var i=0;i<day ;i++ )aSpan[i].innerHTML='';
+			var count = new Date(year,month+1,0).getDate();
+			//alert(count)
+			for (var i=1;i<=count ;i++ )
+			{
+				aSpan[day-1+i].innerHTML = i;
+				if ( aSpan[day-1+i].innerHTML == date )aSpan[day-1+i].className = 'now';
+			}
+			//没有日期的span隐藏
+			for (var i=0;i<aSpan.length ;i++ )
+			{
+				var inn = aSpan[i].innerHTML;
+				if ( inn.length == 0 )	aSpan[i].style.visibility = 'hidden';
+			}
+		};
+		//日历变化
+		function time(){
+			tM.innerHTML = valM;
+			tY.innerHTML = valY;
+			var date = new Date().getDate();
+			var months = new Date().getMonth();
+			var years = new Date().getFullYear();
+			var year = valY;
+			var month = valM;
+			var day = new Date(year,month-1,1).getDay();
+			aSpan = oUl.getElementsByTagName('span');
+			for (var i=0;i<day ;i++ )aSpan[i].innerHTML='';
+			var count = new Date(year,month,0).getDate();
+			for (var j=0;j<aSpan.length ;j++ )
+			{
+				aSpan[j].innerHTML = '';
+				aSpan[j].style.visibility = 'visible';
+				for (var i=1;i<=count ;i++ )
+				{
+					aSpan[day-1+i].innerHTML = i;
+					if ( aSpan[day-1+i].innerHTML != date || month != (months+1) || year != years )
+					{
+						aSpan[day-1+i].className = '';
+					}else if ( aSpan[day-1+i].innerHTML == date && month == (months+1) && year == years )
+					{
+						aSpan[day-1+i].className = 'now';
+					}
+				}
+				
+				var inn = aSpan[j].innerHTML;
+				if ( inn.length == 0 )aSpan[j].style.visibility = 'hidden';
+			}
+		};
+	</script>
+ </body>
+</html>

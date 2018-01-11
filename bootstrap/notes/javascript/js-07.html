@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  <div style='color:gold;'>
+	<h5>.toString()</h5>
+	把数字变成字符串，可以接受参数，表示进制<br />
+<h5>.toFixed（x）</h5>
+	保留x位小数，会四舍五入<br />
+<h5>Math.random()</h5>
+	随机数[0,1)<br />
+<h5>Math.floor(num)</h5>
+	向下取整<br />
+<h5>Math.ceil(num)</h5>	小数部分不为0
+	向上取整<br />
+<h5>Math.round（num）</h5>只看小数后第一位
+	四舍五入取整<br />
+<h5>Math.max（num）</h5>
+	取最大值 尽量不使用非数字的，可以用纯数字的字符串<br />
+<h5>关于对象	（除null）</h5>
+	可以有 属性/方法<br />
+	有些属性/方法是js语法本来就有的<br />
+	有些属性/定义是自定义的<br />
+<h5>定时器</h5>
+	setInterval() 反复执行<br />
+	setTimeout() 执行一次<br />
+		2个参数：参数1：匿名函数/有名函数/‘函数名（）’不推荐<br />
+			会当成javascript的代码执行，作用域为window下<br />
+			参数2：以毫秒为单位的数字<br />
+<h5>清除定时器</h5>
+	clearInterval()<br />
+	clearTimeout()<br />
+	定时器var的变量，没实际意义，只能用来清除定时器<br />
+	px：var juntong=setInterval()  清除clearInterval（juntong）<br />
+
+	<h5>时间</h5>
+	<ul style="list-style:none;line-height:2.0;">
+	<li>new Date();  //日期对象</li>
+
+	<li>new Date().getFullYear() //获取年份</li>
+
+	<li>new Date().getMonth() //获取月份</li>
+
+	<li>new Date().getDate() //获取日期</li>
+
+	<li>new Date().getHours() //获取小时</li>
+
+	<li>new Date().getMinutes() //获取分</li>
+
+	<li>new Date().getSeconds() //获取秒
+</li>
+	<li>new Date().getTime() //获取毫秒数  时间戳1970年1.1 0时0分0秒到此时此刻的毫秒数</li>
+	</ul>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>动画、过渡、文本属性</title>
+ </head>
+ <body>
+	<div style="color:gold;line-height:2;">
+		white-space:pre //保留空格、缩进、换行 常用<br />
+white-space:pre-wrap //保留空格、缩进、换行<br />
+white-space:pre-line //保留所有换行 常用<br />
+white-space:nowrap //强制不换行<br />
+tab-size:8; //默认为8 缩进长度<br />
+<h3>单行文本超出显示省略号：</h3>
+	text-overflow:ellipsis<br />
+	white-space:nowrap;<br />
+	overflow:hidden;<br />
+<h3>多行文本超出显示省略号：只兼容chrome内核</h3>
+	display:-webkit-box;<br />
+	-webkit-box-orient:vertical;<br />
+	-webkit-line-clamp:num  //做多显示num行<br />
+	overflow：hidden;<br />
+
+<h3>兼容多行显示省略号方法：</h3>
+	js判断内容高度是否大于可是高度；添加after为元素类名ie8下不兼容<br />
+<h3>文字从右至左排列：</h3>
+	direction:rtl;<br />
+	unicode-bidi:bidi-override;<br />
+<h3>文字阴影：</h3>
+	text-shadow:0 0 5px blue  //x偏移量 y偏移量 扩散程度 颜色 //可多个叠加<br />
+<h3>文字描边：</h3>
+	text-stroke：1px red; 需加上内核前缀-webkit ie9以及一下不兼容<br />
+<h3>文本变换：</h3>
+	text-transform:uppercase大写/lowercase小写/capitalize单词首字母大写<br />
+<h3>过渡：</h3>
+	transition-property:属性<br />
+	transition-duration:时间<br />
+	transition-delay:时间<br />
+	transition-timing-function:运动曲线<br />
+	符合属性：transition:属性 时间<br />
+<h3>动画：</h3>
+	<h4 style="margin-left:20px;">拆分属性：</h4>
+		&nbsp;&nbsp;&nbsp;&nbsp;animation-name:动画名称<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;animation-duration：运动时间<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;animation-delay:延迟<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;animation-timing-function:运动曲线<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;animation-direction:alternate //结束之后反向回去<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;animation-play-state:paused/running<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;animation-fill-mode:forwards //保留最后一帧的动画<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;animation-iteration-count:循环次数 infinite无限循环
+	</div>
+ </body>
+</html>

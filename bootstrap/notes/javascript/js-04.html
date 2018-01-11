@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+	<div style='color:gold;line-height:2;margin-left:10em;'>
+		<h4>一、算术运算符：</h4>
+		+ - * / %(取余) <br />
+	<strong>字符串拼接：</strong>
+	+：	2个数字做加法运算 如果有字符串，字符串拼接<br />
+
+		document.write('&lt div&gt'+a+'&lt/div&gt')；<br />
+
+	-：	2个数字做减法运算 如果有字符串不是数字，NaN 不是数字 是number类型<br />
+		如果是数字，把字符串的数字转成number，在做运算<br />
+	*：	2个数字做乘法运算，如果是数字，把字符串的数字转成number在做运算<br />
+
+	== {运算符}优先级高于 = {赋值}<br />
+	
+	<h4>二、比较运算符：</h4>
+		< >  =  ==  ===  !=（不等于）  !==（不全等，包括值和类型）  >=  <=  !(取反)<br />
+		< > 字符串比较 第一位进行比较 ‘5’> '100<br />
+	
+	<p>真：非零数字 true 非空字符串 非空对象</p>
+	<p>假：0 false 空字符串（纯空格即tab不算）null NaN</p>
+
+	<h4>三、逻辑运算符：</h4>
+		||（或者）  &&（和）  <br />
+
+	<h4>四、数据类型转换：</h4>
+		Number()  空字符串提取0 假都提取0 真1<br />
+		parseInt() 取整 提取纯数字出来 parseInt(10.5个) = 10<br />
+		parseFloat() 包括小数一起提取出来<br />
+		从第一位开始找数字，遇到字符就停止<br />
+
+	NaN: Not a Number Number类型 !=NaN<br />
+	isNaN   不是一个数字<br />
+	isNaN() 判断是不是数字<br />
+	转不了就返回NaN
+	</div>
+ </body>
+</html>

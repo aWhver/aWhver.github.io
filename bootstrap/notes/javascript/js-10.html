@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>正则表达式</title>
+ </head>
+ <body>
+  <div style="color:gold;line-height:2;margin-left:20px;">
+	<h3>正则表达式</h3>：
+	规则，用来去匹配字符串的规则<br />
+	如何定义：<br />
+	1.var reg=// 	2.new RegExp()第二种里面的内容要用引号<br />
+	如何使用之test：<br />
+	1.reg.test(str) //str为字符串<br />
+		匹配成功返回true 否则返回false<br />
+	<h4>转义</h4>：\把/转成有意义的 \/<br />
+		要去匹配有特殊意义的符号，加上转义符号<br />
+		\s 是匹配空格 \S 匹配非空格 \d 数字\D非数字<br />
+		\w 字符（字母、数字、_） \W非字符<br />
+		\b 独立部分（起始位置、空格、-、结束位置）<br />
+		\B 非独立部分<br />
+	<h4>量词：{}</h4>
+	{num1,num5}至少匹配num1，至多匹配num2个<br />
+	{num1，}num1至无穷大<br />
+	{num} 匹配num个<br />
+	
+	<h4>量词特殊表达：</h4>
+	{1，} 等价+<br />
+	{0，} 等价*<br />
+	{0,1} 等价？	<br />
+	<h4>如何使用之match：</h4>
+		str.match(reg)<br />
+		匹配成功会把结果和子项放在一个数组里并返回 失败返回null<br />
+	标识：写在正则表达式后面<br />
+	g 从头到尾匹配 i 不区分大小写<br />
+
+	字符集 [] 字母范围a-z [a-z]  数字范围 0-9<br />
+	汉字 \u2E80-\u9FFF<br />
+	[] 或者的意思 匹配单个<br />
+
+	^ 除了什么之外<br />
+	（）子集  匹配整体量词<br />
+
+	<h4>如何使用之replace：</h4>
+		str.replace(reg，参数1) 参数可以是字符串也可以是函数<br />
+
+	. 任意字符 ^起始位置 $结束位置<br />
+
+	表单里面可以直接用 表单.name 去获取元素节点
+  </div>
+ </body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+	<div style='color:gold;line-height:2;'>
+	对象.style.属性 只获取行内样式<br />
+
+
+getComputedStyle(对象).属性<br />
+	兼容ie9及以上浏览器，主流浏览器<br />
+
+对象.currentStyle.属性<br />
+	ie678<br />
+
+未知的变量会报错，而对象的未知属性是und，不会报错<br />
+
+兼容方法：<br />
+	function getStyle（object，attr）{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		if(obj.currentStyle)//判断真假值	<br />
+&nbsp;&nbsp;		{<br />
+&nbsp;	&nbsp;&nbsp;&nbsp;return obj.currentStyle[attr]<br />
+&nbsp;&nbsp;&nbsp;}else<br />
+&nbsp;	&nbsp;	&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;	&nbsp;return getComputedStyle(obj)<br />
+&nbsp;&nbsp;&nbsp;[attr]		}<br />
+	
+};<br />
+		1. style只能设置样式，无法完全获取样式（只能获取行内样式）<br />
+2.在获取/设置符合样式时使用驼峰名<br />
+3.浮动样式float时保留字，使用cssFloat（非ie），styleFloat（ie）代替<br />
+4.设置样式较多时，使用类名+css代替<br />
+5.获取的颜色和路径和本来设置的可能不一样，所以不能用来判断<br />
+
+
+<strong>if 判断</strong>
+	<p>
+		if判断就是判断布尔值 true false
+	</p>
+	<p>
+		1.if(条件){<br />
+			代码<br />
+			};<br />
+		如果是这种形式 {} 可以省略 并且代码可以和if（条件）并行<br />
+		2.if（条件）{<br />
+				代码1		<br />	
+			}esle{<br />
+				代码2<br />
+				};<br />
+		每个代码里只有一个执行代码时可用三目运算符，也叫三元表达式：<br />
+		条件？代码1：代码2；<br />
+		3.if嵌套<br />
+		if（条件）{<br />
+			代码<br />
+			}（此处不能有分号，否则代表语句结束）else if{<br />
+				
+				}；<br />
+		
+		嵌套越多，影响性能，加载速度有影响
+	</p>
+	</div>
+ </body>
+</html>

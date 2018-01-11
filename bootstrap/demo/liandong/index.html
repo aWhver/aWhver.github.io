@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>省市县3级联动</title>
+ </head>
+ <body>
+	<select name="" id="province">
+		<option value="0">省</option>
+	</select>
+	<select name="" id="city">
+		<option value="0">市</option>
+	</select>
+	<select name="" id="district">
+		<option value="0">县</option>
+	</select>
+	<script type="text/javascript" src="areaData.js"></script>
+	<script type="text/javascript" src="jquery-1.12.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var province = areaData.sheng;
+			var city = areaData.shi;
+			var district = areaData.xian;
+			var index=0;
+			for (var i=0;i<province.length ;i++ )
+			{
+				var $option = $("<option value="+(i+1)+">"+ province[i] +"</option>");
+				$("#province").append($option);
+			};
+			$("#province").change(function(){
+				//console.log(this.selectedIndex);
+				index = this.selectedIndex-1;
+				
+				if ( index>=0 )
+				{
+					var shi = city["a_"+index];
+					$("#city").html("<option value='0'>市</option>");
+					$("#district").html("<option value='0'>县</option>");
+					for ( var i=0;i<shi.length ;i++ )
+					{ 
+						var $option = "<option value="+(i+1)+">"+ shi[i] +"</option>";
+						$("#city").append($option);
+					}
+				}
+			});
+			$("#city").change(function(){
+				var shiIndex = this.selectedIndex-1;
+				
+				if ( shiIndex>=0 )
+				{
+					var xian = district["a_"+index+"_"+shiIndex];
+					$("#district").html("<option value='0'>县</option>");
+					for (var i=0;i<xian.length ;i++ )
+					{
+						var $option = $("<option value="+(i+1)+">"+ xian[i] +"</option>");
+						$("#district").append($option);
+					}
+				}
+			});
+		});
+	</script>
+ </body>
+</html>

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>please enter your title</title>
+  <style type="text/css">
+	*{margin:0;padding:0}
+	#wrap{
+		width:1200px;
+		height:360px;
+		margin:100px auto;
+	}
+	#wrap ul li{
+		list-style:none;
+		float:left;
+		margin-right:12px;
+		position:relative;
+		overflow:hidden;
+	}
+	#wrap ul li img{
+		display:block;
+	}
+	#wrap ul li a{
+		display:block;
+		width:230px;
+		height:360px;
+		background:url(img/new-bg.png);
+		position:absolute;
+		top:0;
+		left:-230px;
+		text-decoration:none;
+		color:#fff;
+		text-align:center;
+	}
+	#wrap ul li p.des{
+		margin-top:160px;
+		margin-bottom:10px;
+	}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<ul>
+			<li><img src="img/1.jpg" alt="" />
+				<a href="" class="cover">
+					<p class="des">春夏新品 上新无限</p>
+					<p>点击进入</p>
+				</a>
+			</li>
+			<li><img src="img/2.jpg" alt="" />
+				<a href="" class="cover">
+					<p class="des">夏装新品发布 8折起</p>
+					<p>点击进入</p>
+				</a>
+			</li>
+			<li><img src="img/3.jpg" alt="" />
+				<a href="" class="cover">
+					<p class="des">春装特惠 买二送一</p>
+					<p>点击进入</p>
+				</a>
+			</li>
+			<li><img src="img/4.jpg" alt="" />
+				<a href="" class="cover">
+					<p class="des">春夏新品 低至158</p>
+					<p>点击进入</p>
+				</a>
+			</li>
+			<li style="margin-right:0"><img src="img/5.jpg" alt="" />
+				<a href="" class="cover">
+					<p class="des">美洲野牛旗舰店</p>
+					<p>商务休闲新境界</p>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript"src="js/jquery-1.12.1.min.js"></script>
+	<script type="text/javascript">
+		(function(){
+			fn('#wrap');
+			function fn(obj){
+
+				var $li = $(obj +' ul li');
+
+				$li.hover(function(e){
+					direction.call(this,e,true)
+
+				},function(e){
+					direction.call(this,e,false)
+				})
+
+				function direction(e,bool){
+					var h = $(this).find('a.cover').height();
+					var w = $(this).find('a.cover').width();
+
+					var top = $(this).offset().top,
+						bottom = top + $(this).height(),
+						left = $(this).offset().left,
+						right = left + $(this).width();
+
+					//console.log(top+','+bottom+','+left+','+right);
+
+					var disT = Math.abs(e.pageY - top),
+						disB = Math.abs(e.pageY - bottom),
+						disL = Math.abs(e.pageX - left),
+						disR = Math.abs(e.pageX - right);
+
+					//console.log(disT+','+disB+','+disL+','+disR);
+
+					var min = Math.min(disT,disB,disL,disR);
+
+					switch ( min )
+					{
+						case disT:
+							if ( bool )
+							{
+								$(this).find('a.cover').css({
+								top:-h+'px',
+								left:0}).stop().animate({
+									top:0
+								},300)
+							}else{
+								$(this).find('a.cover').stop().animate({
+									top:-h+'px',
+								},300)
+							}
+							
+							break;
+						case disB:
+							if ( bool )
+							{
+								$(this).find('a.cover').css({
+								top:h+'px',
+								left:0}).stop().animate({
+									top:0
+								},300)
+							}else{
+								$(this).find('a.cover').stop().animate({
+									top:h+'px',
+								},300)
+							}
+							
+							break;
+						case disL:
+							if ( bool )
+							{
+								$(this).find('a.cover').css({
+								top:0,
+								left:-w+'px'}).stop().animate({
+									left:0
+								},300)
+							}else{
+								$(this).find('a.cover').stop().animate({
+									left:-w+'px'
+								},300)
+							}
+							
+							break;
+						case disR:
+							if ( bool )
+							{
+								$(this).find('a.cover').css({
+								top:0,
+								left:w+'px'}).stop().animate({
+									left:0
+								},300)
+							}else{
+								$(this).find('a.cover').stop().animate({
+									left:w+'px'
+								},300)
+							}
+					}
+				}
+			};
+		})();
+	</script>
+ </body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>transform做正方体</title>
+  <style type="text/css">
+	body{background:#000;}
+	#wrap{
+		width:200px;
+		height:200px;
+		margin:200px auto;
+		position:relative;
+		border-radius:20%;
+		transform-style:preserve-3d;
+		transform:rotatex(30deg) rotatey(30deg);
+		/*perspective:400px;*/
+		animation:rotate linear 10s infinite;
+		
+	}
+	@keyframes rotate{
+			0%{transform:rotateX(-30deg) rotateY(-30deg) rotateZ(-30deg)}
+			20%{transform:rotateX(-70deg) rotateY(-60deg) rotateZ(60deg)}
+			40%{transform:rotateX(-110deg) rotateY(-110deg) rotateZ(-110deg)}
+			60%{transform:rotateX(-160deg) rotateY(90deg) rotateZ(-180deg)}
+			80%{transform:rotateX(-90deg) rotateY(-25deg) rotateZ(-105deg)}
+			100%{transform:rotateX(60deg) rotateY(-30deg) rotateZ(-30deg)}
+		} 
+	#wrap div{
+		width:200px;
+		height:200px;
+		border:1px solid #ccc;
+		position:absolute;	
+		border-radius:20%;
+		overflow:hidden;
+		}
+	#wrap div:nth-of-type(1){
+		transform:translatez(100px);
+	}
+	#wrap div:nth-of-type(2){
+		transform:rotatey(-90deg) translatez(100px);
+	}
+	#wrap div:nth-of-type(3){
+		transform:rotatex(90deg) translatez(-100px);
+	}
+	#wrap div:nth-of-type(4){
+		transform:rotatex(90deg) translatez(100px);
+	}
+	#wrap div:nth-of-type(5){
+		transform:rotatey(-90deg) translatez(-100px);
+	}
+	#wrap div:nth-of-type(6){
+		transform:translatez(-100px);
+	}
+	img{width:200px;height:200px;}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<div><img src="images/2.jpg" alt="" /></div>
+		<div><img src="images/3.jpg" alt="" /></div>
+		<div><img src="images/4.jpg" alt="" /></div>
+		<div><img src="images/5.jpg" alt="" /></div>
+		<div><img src="images/6.jpg" alt="" /></div>
+		<div><img src="images/1.jpg" alt="" /></div>
+	</div>
+ </body>
+</html>

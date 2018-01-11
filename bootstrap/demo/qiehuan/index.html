@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>H5 幻灯片 </title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	#wrap{width:100%;height:100%;overflow:hidden;}
+	.pic{width:100%;height:100%;position:absolute;overflow:hidden;perspective:800px;}
+	.pic .img{width:50%;height:50%;position:absolute;overflow:hidden;}
+	.pic .img .bgm{width:100%;height:100%;position:absolute;overflow:hidden;transition:1.5s;}
+	.pic .img:nth-child(2),.pic .img:nth-child(4){left:50%;}
+	.pic .img:nth-child(3),.pic .img:nth-child(4){top:50%;}
+	.pic .img img{display:block;position:absolute;}
+	.pic .img:nth-child(2) img,.pic .img:nth-child(4) img{left:-100%;}
+	.pic .img:nth-child(3) img,.pic .img:nth-child(4) img{top:-100%;}
+	#btn span{position:absolute;z-index:9;width:25px;height:50px;background:rgba(0,0,0,.5);top:50%;margin-top:-25px;font-size:30px;line-height:50px;text-align:center;cursor:pointer;color:#fff;}
+	#btn span.prev{left:0;border-radius:0 3px 3px 0;}
+	#btn span.next{right:0;border-radius:3px 0 0 3px;}
+	#wrap .pic.active .img{animation:scaleDown 1.5s ease;}
+	@keyframes scaleDown{
+		from{transform:translate3d(0,0,380px);}
+		to{transform:translate3d(0,0,0);}
+	}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<div class="pic" style="z-index:2;">
+			<!-- 套这层盒子是为图片定位显示相应的部分 -->
+			<div class="img">
+				<div class="bgm"><img src="img/1.jpg" alt="" /></div>
+			</div>
+			<div class="img">
+				<div class="bgm"><img src="img/1.jpg" alt="" /></div>
+			</div>
+			<div class="img">
+				<div class="bgm"><img src="img/1.jpg" alt="" /></div>
+			</div>
+			<div class="img">
+				<div class="bgm"><img src="img/1.jpg" alt="" /></div>
+			</div>
+		</div>
+		<div class="pic">
+			<div class="img">
+				<div class="bgm"><img src="img/2.jpg" alt="" /></div>
+			</div>
+			<div class="img">
+				<div class="bgm"><img src="img/2.jpg" alt="" /></div>
+			</div>
+			<div class="img">
+				<div class="bgm"><img src="img/2.jpg" alt="" /></div>
+			</div>
+			<div class="img">
+				<div class="bgm"><img src="img/2.jpg" alt="" /></div>
+			</div>
+		</div>
+		<div class="pic">
+			<div class="img">
+				<div class="bgm"><img src="img/3.jpg" alt="" /></div>
+			</div>
+			<div class="img">
+				<div class="bgm"><img src="img/3.jpg" alt="" /></div>
+			</div>
+			<div class="img">
+				<div class="bgm"><img src="img/3.jpg" alt="" /></div>
+			</div>
+			<div class="img">
+				<div class="bgm"><img src="img/3.jpg" alt="" /></div>
+			</div>
+		</div>
+		<div class="pic">
+			<div class="img">
+				<div class="bgm"><img src="img/4.png" alt="" /></div>
+			</div>
+			<div class="img">
+				<div class="bgm"><img src="img/4.png" alt="" /></div>
+			</div>
+			<div class="img">
+				<div class="bgm"><img src="img/4.png" alt="" /></div>
+			</div>
+			<div class="img">
+				<div class="bgm"><img src="img/4.png" alt="" /></div>
+			</div>
+		</div>
+		<div id="btn">
+			<span class="prev"> < </span>
+			<span class="next"> > </span>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+	<script type="text/javascript">
+		(function(){
+			var $btn = $('#btn span');
+			var $pic = $('#wrap .pic');
+			var width= $(window).width();
+			var height= $(window).height();
+			var index=0;
+			var nowDate =0;
+			$btn.click(function(){
+				var i = $(this).index();
+				if ( new Date() - nowDate > 1500 )
+				{
+					nowDate = new Date();
+					$pic.find('.bgm').css({transform: 'none'});
+					$pic.eq(index).css({zIndex: 2}).siblings('.pic').css({zIndex: 0});
+					if ( i )
+					{
+						moveR(index);
+						index++;
+						index%=$pic.length;
+					}else{
+						moveL(index);
+						index--;
+						if ( index<0 )index=$pic.length-1;
+					}
+					$pic.eq(index).css({zIndex: 1}).addClass('active').siblings().removeClass('active');
+				};
+			});
+			function moveR(index){
+				$pic.eq(index).find('.bgm').eq(0).css({
+					transform: 'translatex('+ (width/2) +'px)'
+				})
+				$pic.eq(index).find('.bgm').eq(1).css({
+					transform: 'translatey('+ (height/2) +'px)'
+				});
+				$pic.eq(index).find('.bgm').eq(2).css({
+					transform: 'translatey(-'+ (height/2+10) +'px)'
+				});
+				$pic.eq(index).find('.bgm').eq(3).css({
+					transform: 'translatex(-'+ (width/2+10) +'px)'
+				});
+			};
+			function moveL(index){
+				$pic.eq(index).find('.bgm').eq(0).css({
+					transform: 'translatey('+ (height/2) +'px)'
+				})
+				$pic.eq(index).find('.bgm').eq(1).css({
+					transform: 'translatex(-'+ (width/2+10) +'px)'
+				});
+				$pic.eq(index).find('.bgm').eq(2).css({
+					transform: 'translatex('+ (width/2) +'px)'
+				});
+				$pic.eq(index).find('.bgm').eq(3).css({
+					transform: 'translatey(-'+ (height/2+10) +'px)'
+				});
+			};
+		})();
+	</script>
+ </body>
+</html>

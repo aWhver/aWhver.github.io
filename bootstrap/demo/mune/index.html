@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>扇形菜单</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	li{list-style:none;}
+	#mune{width:100px;height:100px;position:fixed;left:0;top:0;background:#4097c8;border-radius:0 0 100px;}
+	#mune .s1{position:absolute;left:0;top:0;}
+	#mune .s1 li.l0{border-radius:0 0 100px;width:100px;height:100px;}
+	#mune .s1 li.l0 > span{text-align:center;line-height:70px;width:100%;height:100px;background:#c8c8c8;border-radius:0 0 100px;position:absolute;z-index:10;}
+	#mune .s1 li.l0 > span:hover{background:#9933ff;color:#fff;}
+	#mune .s1 .l0 > ul{transform:rotate(90deg);position:absolute;transition:1.5s;}
+	#mune .s1 li.l0:hover > ul{transform:rotate(0deg);}
+	#mune .s1 li.l1{width:110px;height:110px;position:absolute;}
+	#mune .s1 li.l1 span{text-align:center;line-height:70px;transform-origin:top left;padding-left:100px;border-radius:0 0 200px;width:100px;height:200px;position:absolute;left:0;top:0;z-index:9;}
+	#mune .s1 li.l1:nth-of-type(1) span{transform:rotate(0deg);background:#bbb;}
+	#mune .s1 li.l1:nth-of-type(2) span{transform:rotate(22.5deg);background:#aaa;}
+	#mune .s1 li.l1:nth-of-type(3) span{transform:rotate(45deg);background:#999;}
+	#mune .s1 li.l1:nth-of-type(4) span{transform:rotate(67.5deg);background:#888;}
+	#mune .s1 li.l1 span:hover{background:#9933ff;color:#fff;}
+	#mune .s1 li.l1 li{text-align:center;line-height:70px;transform-origin:top left;z-index:8;width:100px;height:300px;padding-left:200px;border-radius:0 0 300px;position:absolute;left:0;top:0;}
+	#mune .s1 li.l1 ul{transform:rotate(90deg);position:absolute;transition:1.5s;}
+	#mune .s1 li.l1:hover  ul{transform:rotate(0deg);}
+	#mune .s1 li.l1 li:nth-of-type(1){transform:rotate(0deg);background:#888;}
+	#mune .s1 li.l1 li:nth-of-type(2){transform:rotate(18deg);background:#777;}
+	#mune .s1 li.l1 li:nth-of-type(3){transform:rotate(36deg);background:#666;}
+	#mune .s1 li.l1 li:nth-of-type(4){transform:rotate(54deg);background:#555;}
+	#mune .s1 li.l1 li:nth-of-type(5){transform:rotate(72deg);background:#444;}
+	#mune .s1 li.l1 li:hover{background:#9933ff;color:#fff;}
+	
+  </style>
+ </head>
+ <body>
+	<div id="mune">
+		<div class="s1">
+			<ul>
+				<li class="l0">
+					<span>mune</span>
+					<ul>
+						<li class="l1">
+							<span>首页</span>
+							<ul>
+								<li>静态网页开发</li>
+								<li>JS特效</li>
+								<li>H5移动开发</li>
+								<li>BOOTSTRAP框架</li>
+								<li>highchart</li>
+							</ul>
+						</li>
+						<li class="l1">
+							<span>前端课程</span>
+							<ul>
+								<li>静态网页开发</li>
+								<li>JS特效</li>
+								<li>H5移动开发</li>
+								<li>BOOTSTRAP框架</li>
+								<li>highchart</li>
+							</ul>
+						</li>
+						<li class="l1">
+							<span>公开课视频</span>
+							<ul>
+								<li>静态网页开发</li>
+								<li>JS特效</li>
+								<li>H5移动开发</li>
+								<li>BOOTSTRAP框架</li>
+								<li>highchart</li>
+							</ul>
+						</li>
+						<li class="l1">
+							<span>VIP专区</span>
+							<ul>
+								<li>静态网页开发</li>
+								<li>JS特效</li>
+								<li>H5移动开发</li>
+								<li>BOOTSTRAP框架</li>
+								<li>highchart</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			
+		</div>
+	</div>
+ </body>
+</html>

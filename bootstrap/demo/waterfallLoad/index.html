@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>瀑布流</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	#wrap{
+		width:837px;
+		margin:20px auto;
+	}
+	#wrap ul{overflow:hidden;}
+	#wrap ul li{
+		width:265px;
+		list-style:none;
+		float:left;
+	}
+	#wrap ul li .detail{
+		border:1px solid #ddd;
+		margin-bottom:15px;
+		display:none;
+	}
+	#wrap ul li .detail img{display:block;}
+	#wrap ul li .desc{
+		padding:8px 20px;
+		line-height:25px;
+		color:#000;
+		text-decoration:none;
+		display:block;
+	}
+	#wrap ul li .desc:hover{
+		color:#339900;
+	}
+	#wrap ul li .time{
+		height:42px;
+		border-top:1px solid #ddd;
+		background:#f1f1f1;
+	}
+	#wrap ul li .time p{
+		height:42px;
+		float:left;
+		color:#666;
+		font-size:12px;
+		text-indent:20px;
+		line-height:42px;
+		text-align:center;
+	}
+	#wrap ul li .time a{
+		width:80px;
+		float:right;
+		height:42px;
+		line-height:42px;
+		text-align:center;
+		text-decoration:none;
+		color:#666;
+		font-size:12px;
+		border-left:1px solid #ddd;
+	}
+	#wrap ul li .time a:hover{
+		color:#339900;
+	}
+	#wrap .load{
+		width:120px;
+		height:40px;
+		display:block;
+		background:#f1f1f1;
+		line-height:40px;
+		text-align:center;
+		border:1px solid #eee;
+		cursor:pointer;
+		margin-left:358px;
+	} 
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<ul>
+			<li>
+				<!-- <div class="detail">
+					<img src="img/1.jpg"width="263" alt="" />
+					<a href="" class="desc">你们男神都爱的倪妮 就是个大写哒美好</a>
+					<div class="time">
+						<p>2016/11/15 13:06</p>
+						<a href="">阅读全文</a>
+					</div>
+				</div> -->
+			</li>
+			<li style='margin-left:20px;'></li>
+			<li style='float:right;'></li>
+		</ul>
+		
+	</div>
+	<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+	<script type="text/javascript" src="js/data.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var $wrap = $('#wrap');
+			var $li = $('#wrap ul li');
+			var index= -1 ;
+			show(9);
+			function show(num){
+				index++;
+				var oDiv = createE(index);
+				var i = getshort();
+				$li.eq(i).append($(oDiv));
+				$(oDiv).fadeIn(1000);
+				var oImg = oDiv.getElementsByTagName('img')[0];
+				oImg.onload = function(){
+					if ( index < num )show(num);
+				};
+			};
+			function scroll(){
+				var h = $wrap.offset().top+$wrap.height() - $(document).scrollTop();
+				if (  h < $(window).height() )
+				{
+					$(this).off('scroll');
+					var $load = $('<span class="load">点击加载....</span>')
+					$wrap.append($load);
+					$load.click(function(){
+						num = index +10;
+						show(num);
+						$(this).remove();
+						$(document).scroll(scroll);
+					});
+				};
+			};
+			$(document).scroll(scroll);	
+			/*
+			$(document).scroll(function(){
+				//var num = index
+				if ( $wrap.height() - $(document).scrollTop() < $(window).height() )
+				{
+					num = index +10;
+					show(num);
+				};
+			});	
+			*/
+			//得到最短liheight度序列号
+			function getshort(){
+				var a=0;
+				var fh = $li.eq(0).height();
+				for ( var i=1 ;i<$li.length ;i++ )
+				{
+					var nh = $li.eq(i).height();
+					if ( nh < fh )
+					{
+						a = i;
+						fh = nh;
+					};
+				};
+				return a;
+			};
+			//创建元素
+			function createE(i){
+				var oDiv = document.createElement('div');
+					oDiv.className='detail';
+				var oImg = new Image();
+					oImg.width = '263';
+					oImg.src=imgData[i].src;
+				var oA = document.createElement('a');
+					oA.className='desc';
+					oA.innerHTML=imgData[i].dec;
+				var oDiv1 = document.createElement('div');
+					oDiv1.className = 'time';
+				var oP = document.createElement('p');
+					oP.innerHTML=imgData[i].time;
+				var oA1 = document.createElement('a');
+					oA1.innerHTML='阅读全文';
+				oDiv1.appendChild(oP);
+				oDiv1.appendChild(oA1);
+				oDiv.appendChild(oImg);
+				oDiv.appendChild(oA);
+				oDiv.appendChild(oDiv1);
+				
+				return oDiv;
+			};
+		});
+	</script>
+ </body>
+</html>

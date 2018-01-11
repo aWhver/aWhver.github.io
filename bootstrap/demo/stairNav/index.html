@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>京东楼梯导航</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	li{list-style:none;}
+	#page{
+		width:1210px;
+		margin:0 auto;
+	}
+	#header,#footer{
+		width:1210px;
+		height:600px;
+		margin:0 auto;
+		background:#9999ff;
+	}
+	.content{
+		width:1210px;
+		margin:0 auto;
+	}
+	#slide{
+		width:30px;
+		height:245px;
+		font-weight:500;
+		POSITION:fixed;
+		top:50%;
+		margin-top:-125px;
+		left:18px;
+		box-shadow:0 0 5px #000;
+		display:none;
+		background:#fff;
+	}
+	#slide ul li{
+		width:30px;
+		height:30px;
+		text-align:center;
+		line-height:30px;
+		cursor:pointer;
+		font-size:12px;
+	}
+	#slide ul li.active{
+		background:#f60;
+		color:#fff;
+	}
+	#slide ul li:hover{
+		background:#f60;
+		color:#fff;
+	}
+  </style>
+ </head>
+ <body>
+	<div id="page">
+		<div id="header"></div>
+
+		<div class="content">
+			<img src="img/01.jpg" alt="" />
+		</div>
+		<div class="content">
+			<img src="img/02.png" alt="" />
+		</div>
+		<div class="content">
+			<img src="img/03.png" alt="" />
+		</div>
+		<div class="content">
+			<img src="img/04.png" alt="" />
+		</div>
+		<div class="content">
+			<img src="img/05.png" alt="" />
+		</div>
+		<div class="content">
+			<img src="img/06.png" alt="" />
+		</div>
+		<div class="content">
+			<img src="img/07.png" alt="" />
+		</div>
+		<div class="content">
+			<img src="img/08.png" alt="" />
+		</div>
+
+		<div id="footer"></div>
+
+		<div id="slide">
+			<ul>
+				<li class="active">1F</li>
+				<li>2F</li>
+				<li>3F</li>
+				<li>4F</li>
+				<li>5F</li>
+				<li>6F</li>
+				<li>7F</li>
+				<li>8F</li>
+			</ul>
+		</div>
+		
+	</div>
+	<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+	<script type="text/javascript">
+		setTimeout(function(){
+			$(document).scrollTop(0);
+		},100);
+		var $slide = $("#slide");
+		var $slideLi = $("#slide ul li");
+		var $content = $(".content");
+		var arr1=["服装","美妆","手机","电器","数码" ,"运动" ,"居家" ,"母婴"];
+		var arr2=["1F","2F","3F","4F","5F" ,"6F" ,"7F" ,"8F"];
+		$(window).scroll(function(){
+			var scroll = $(window).scrollTop();
+			if ( scroll>500 )
+			{
+				$slide.show();
+				for (var i=0;i<$content.length ;i++ )
+				{
+					if ( $content.eq(i).position().top-150>=scroll )
+					{
+						$slideLi.eq(i-1).addClass('active').siblings().removeClass("active");
+						$slideLi.each(function(i){
+							$(this).html(arr2[i]);
+						});
+						$slideLi.eq(i-1).html(arr1[i-1]);
+						break;
+					};
+					if ( i == $content.length-1 )
+					{
+						$slideLi.eq(i).addClass("active").siblings().removeClass("active");
+						$slideLi.each(function(i){
+						$(this).html(arr2[i]);
+						});
+						$slideLi.eq(i).html(arr1[i]);
+					};
+				};
+			}
+			else{
+				$slide.hide();
+			};
+		});
+		$slideLi.click(function(){
+			var index = $(this).index();
+			var top = $content.eq(index).position().top;
+			$(this).addClass("active").siblings().removeClass("active");
+			$slideLi.each(function(i){
+				$(this).html(arr2[i]);
+			});
+			$(this).html(arr1[index]);
+			//$(document).scrollTop(top);
+			$("html,body").animate({
+				scrollTop: top
+			},500);
+		});
+	</script>
+ </body>
+</html>

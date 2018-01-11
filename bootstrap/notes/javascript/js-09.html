@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>please enter your title</title>
+ </head>
+ <body>
+  <div style="color:gold;line-height:2;">
+	<h3>DOM:</h3>
+	<h4>1.子节点</h4>
+	元素.childNodes  元素节点是节点列表 有兼容性问题<br />
+	需判断nodeType 节点类型<br />
+	children  与childNodes 功能一样 无兼容性问题<br />
+	元素.attributes  属性节点<br />
+	<h4>2.父节点</h4>
+		parentNode 无兼容性问题<br />
+	<h4>3.firstChild</h4>
+	标准下：文本节点  非标准（ie678）：只包含元素节点<br />
+	<h4>4.firstElementChild</h4>
+	标准下：只包含元素节点 非标准：undefined（用来判断）<br />
+	<h4>5.DOM元素的创建、添加、删除</h4>
+	createElement //创建一个节点 px:var oLi=document.createElement('li')<br />
+	appendChild //在末尾追加一个节点 px：父级.appendChild（oLi）<br />
+	insertBefore //在已有元素前面添加 px:父级.insertBefore（oLi,aLi[num]）（ie下报错）<br />
+	<h4>兼容方法：</h4>
+	if（aLi.length>0）{<br />
+		父级.insertBefore（oLi，aLi[num]）<br />
+	}else<br />
+	{<br />
+		父级.appendChild（oLi）	<br />
+	}<br />
+	removeChild //删除节点 父级.removeChild（删除谁）<br />
+	<h4>6.offset</h4>
+	offsetTop：当前元素到定位父级的距离<br />
+	如果没定位父级 1.标准下是到html的距离<br />
+		       2.非标准下到body的距离<br />
+	offsetParent<br />
+	没有定位父级  body<br />
+	非标准下，自身有定位。没有定位父级  html<br />
+		  自身没有定位，没有定位父级 body<br />
+	如果父节点有zoom，定位父级就指向有zoom的元素<br />
+	clientWidth 元素内容的宽度 样式宽+padding<br />
+	offsetWidth 		   样式宽+padding+border<br />
+	scrollheight    滚动高度 toppadding+内容高度+margin<br />
+
+<h3>BOM:</h3>
+	window.navigator.userAgent  //判别浏览器版本信息<br />
+	谷歌认为滚动条不属于文档 属于body<br />
+	火狐、ie认为滚动条属于文档<br />
+	<h4>滚动条兼容：</h4>
+	var scrollTop=document.documentElement.scrollTop(火狐 ie) || document.body.scrollTop(谷歌)<br />
+	onscroll //当滚动条滚动的时候执行什么操作<br />
+	onfocus //获取焦点<br />
+	onblur //失去焦点<br />
+	select（）//选取内容<br />
+
+<h3>event事件：</h3>
+	需绑定事件 ie/chrome支持  ff不支持<br />
+	e 非标准ie678不支持<br />
+	clientX【Y】//到浏览器串口的距离<br />
+	pageX【Y】// 到整个文档顶部的距离<br />
+	e.cancelBubble=true;//阻止当前对象的冒泡机制<br />
+
+	<h4>事件绑定：</h4>
+	ie678下 对象.attachEvent（事件名，事件函数）点击onclick此种绑定方式可以让同一个对象执行多种事情，类似函数封装<br />
+	标准下  对象.addEventListener(不加on的事件名，事件函数，是否捕获)点击click 默认捕获true<br />
+	冒泡事件 执行从下至上 捕获事件 执行从上至下<br />
+	<h4>兼容方法：</h4>
+	function bind（obj,eName,fn）{<br />
+		if (obj.addEventListener)//标准下<br />
+		{<br />
+			obj.addEventListener（eName,fn，false）<br />
+		}else{//678<br />
+			obj.attachEvent（”on”+eName，function（）{<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&nbsp;fn.call（obj）；<br />
+	&nbsp;	&nbsp;	&nbsp;}）<br />
+	&nbsp;	&nbsp;}<br />
+	}<br />
+  </div>
+ </body>
+</html>

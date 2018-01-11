@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>3D轮播技术</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	li{list-style:none;}
+	#wrapper{
+		width:980px;
+		height:400px;
+		border:1px solid red;
+		margin:120px auto;
+		position:relative;
+		}
+	#wrapper .btn{
+		display:block;
+		width:30px;
+		height:60px;
+		background-color:rgba(0,0,0,.5);
+		position:absolute;
+		background-size:100%;
+		background-repeat:no-repeat;
+		background-position:center;
+		border-radius:3px;
+		z-index:999;
+		top:180px;
+		}
+	#left-btn{
+		left:50px;
+		background:url('images/left.png');
+		}
+	#right-btn{
+		right:50px;
+		background:url('images/right.png');
+		}
+	#wrapper ul li{
+		width:540px;
+		height:230px;
+		position:absolute;
+		left:200px;
+		top:95px;
+		}
+	#wrapper ul li img{width:100%;height:100%;}
+	#wrapper ul li.face1{width:640px;
+		height:270px;
+		z-index:11;
+		left:170px;
+		top:70px;
+		}
+	#wrapper ul li.face2{
+		left:10px;
+		top:95px;
+		z-index:8;
+		}
+	#wrapper ul li.face3{
+		left:430px;
+		top:95px;
+		z-index:8;
+		}
+
+  </style>
+ </head>
+ <body>
+	<div id="wrapper">
+		<a id='left-btn'class='btn'href="javascript:;"></a>
+		<a id='right-btn'class='btn'href="javascript:;"></a>
+		<ul class='imglist'>
+			<li class='face1'><a href="javascript:;"><img src="images/1.jpg" alt="" /></a></li>
+			<li class='face2'><a href="javascript:;"><img src="images/2.jpg" alt="" /></a></li>
+			<li class='face'><a href="javascript:;"><img src="images/3.jpg" alt="" /></a></li>
+			<li class='face'><a href="javascript:;"><img src="images/4.jpg" alt="" /></a></li>
+			<li class='face'><a href="javascript:;"><img src="images/5.jpg" alt="" /></a></li>
+			<li class='face'><a href="javascript:;"><img src="images/6.jpg" alt="" /></a></li>
+			<li class='face'><a href="javascript:;"><img src="images/7.jpg" alt="" /></a></li>
+			<li class='face'><a href="javascript:;"><img src="images/8.jpg" alt="" /></a></li>
+			<li class='face'><a href="javascript:;"><img src="images/9.jpg" alt="" /></a></li>
+			<li class='face3'><a href="javascript:;"><img src="images/10.jpg" alt="" /></a></li>
+		</ul>
+	</div>
+	<script type="text/javascript" src='js/jquery.js'></script>
+	<script type="text/javascript">
+		$(function(){
+			//alert($)
+			//获取空数组
+			var time = 0;
+			var _index=0;
+			var arrWidth = [];
+			var arrHeight = [];
+			var arrLeft = [];
+			var arrTop = [];
+			var arrZindex = [];
+			var time =new Date();
+			//alert(time);
+			//second = time.getSeconds();
+			//alert(second);
+			var obj = $('#wrapper ul li');
+			var len =obj.length;
+			//alert(len)
+				$('#right-btn').click (function(){
+					if(new Date-time>500){
+					factory(0);}
+					time = new Date();
+					})
+				$('#left-btn').click (function(){
+					if(new Date-time>500){
+					factory(1);}
+					time = new Date();
+					})
+				//定义一个函数是所有数值被定义在数组里面
+				function factory(item){
+					//for循环遍历所有li元素并保存数组值
+					for(var i=0;i<len;i++){
+						arrWidth[i]=obj.eq(i).css('width');//css就是指定元素的样式
+						arrHeight[i]=obj.eq(i).css('height');
+						arrLeft[i]=obj.eq(i).css('left');
+						arrTop[i]=obj.eq(i).css('top');
+						arrZindex[i]=obj.eq(i).css('z-index');
+					}
+					//console.log(arrHeight)
+						for(var i=0;i<len;i++){
+							if(item==0)// == --> 判断
+							{
+								if(i==0){_index=9}
+							else{_index=i-1};
+							}
+							if(item==1)
+							{
+								if(i==9){_index=0}
+							else{_index=i+1};
+						}
+						obj.eq(i).css({'z-index':arrZindex[_index]});
+						obj.eq(i).animate({
+							'width':arrWidth[_index],
+							'height':arrHeight[_index],
+							'left':arrLeft[_index],
+							'top':arrTop[_index],
+							//'z-index':arrZindex[_index],
+						})
+						}
+					}
+				})
+		
+	</script>
+ </body>
+</html>

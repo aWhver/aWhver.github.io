@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  <div style='color:gold'>
+	<h4>一、CSS控制字体</h4>
+    @charset utf-8  作用为了避免我们的样式存在中文情况下打开时候出现乱码<br />
+   
+	a、控制字体类型  font-family   <br />  
+
+	 字体的设置最好英文状体   font-family:"Microsoft YaHei";<br />
+
+	b、控制字体大小  font-size <br />
+	
+	  font-size:px;  px值  固定值     相对值 em（响应式）	 px和em的转换  16px=1em<br />
+
+	c、字体的粗细   font-weight:;   normal(100-400)  bold粗体(700)   bolder更粗（） lighter更细的 数值 100-900 <br />     为什么不用strong b 他们这些标记有语义<br />
+	
+	d、字体的风格  font-style:;  斜体  italic  <br /> 
+    <br />
+	e、字体水平对齐方式   text-align:;  左边（left） 居中（center） 右边（right）
+
+	f、字体设置行间距离  line-height:数值px;    数值不能为负	<br />
+
+	g、字体颜色   color:属性值(6位数); 属性值 a1、英文 <br />a2、 #+16进制(a-f 0-9组合)  例如红色（#ff0000）<br />
+
+		      a3、rgb<br />
+
+     	h、添加文本修饰  text-decoration   默认的话是 none   underline(下划线)  overline（上划线）<br />
+.
+	所有字体的属性也可以通过font进行合并<br />
+	font:字体类型 字体粗细 字体大小/行高 "字体1"; <br />
+	
+ <h4>二、背景显示</h4>
+
+ 	a、设置元素的背景颜色  background-color:;<br />
+
+	b、 属性会在元素的背景中设置一个图像
+ <br />
+
+	c、图片不重复出现   background-repeat:no-repeat;      水平重复repeat-x   垂直重复repeat-y  <br />
+
+	d、图片的起始位置  background-position:x  y;  x水平移动数值  y竖直移动值  (自己居中) center center  <br />    
+	e、规定图片的尺寸   background-size:; <br />
+		/*覆盖cover 把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。<br />
+		背景图像的某些部分也许无法显示在背景定位区域中。*/<br />
+		/*contain 原图按比例拉伸*/
+<br />
+	可通过一个background:;对所有背景相关属性进行合并background:颜色 图片 是否重复 背景位置; 
+  </div>
+ </body>
+</html>

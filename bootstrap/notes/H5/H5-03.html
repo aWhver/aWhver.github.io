@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>背景属性</title>
+ </head>
+ <body>
+  <div style="color:gold;line-height:2;margin-left:20px;">
+	<p><strong>background-size</strong> (ie8及以下不兼容)复合属性写在position后</p>
+	background-size: x y <br />
+	background-size: cover //沾满盒子 但不能保证全部看到（用的较多）<br />
+	background-size: contain	//保证看到全图 可能占不满全部<br />
+<h3>多背景：</h3>
+	background-image：url1，url2……<br />
+
+<p><strong>background-origin:</strong>背景区域定位</p>
+	border-box;//从边框开始<br />
+	padding-box;//从padding开始 默认<br />
+	content-box;//从内容开始<br />
+	
+<p><strong>background-clip:</strong>背景绘制区域 从哪个地方看到图片，看不到的砍了</p>
+	border-box;//从边框开始<br />
+	padding-box;//从padding开始 默认<br />
+	content-box;//从内容开始<br />
+
+<h3>渐变：</h3>
+	<h4>线性渐变</h4>  background:linear-gradient(开始位置，开始颜色，结束颜色)需加上浏览器内核<br />
+		  background:linear-gradient(开始位置，开始颜色 占比，结束颜色 占比，其他颜色)<br />
+	<h4>径向渐变</h4>  background:radial-gradient(位置1，位置2/扩散范围，开始颜色，结束颜色)
+
+  </div>
+ </body>
+</html>

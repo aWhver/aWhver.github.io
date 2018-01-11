@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+  div{margin:auto;width:400px;height:420px;
+  color:yellow;}
+  </style>
+ </head>
+ <body>
+	<div>
+		<p>float-浮动问题---会造成元素父级高度塌陷<br/>
+		clear:left | right | both ；规定元素的某侧不允许浮动元素
+		</p>
+		<h3>解决办法</h3>
+		<h4>一、父级办法</h4>
+			<ol  type='a'>
+				<li>加高					问题：扩展性不好</li>
+				<li >inline-block 清浮动方法：		问题：margin:auto失效；</li>
+				<li >overflow:hidden 清浮动方法；	问题：需要配合宽度	
+		           <br/> overflow: 内容溢出  	<br/> 1.scroll | auto | hidden（解决ie6下最小高度19px问题）；
+				<br/>2.overflow-y:hidden;
+				<br/>3.overflow-x:hidden</li>
+				<li >after伪类  元素内部末尾添加内容	(时下主流)
+
+	<br/>after{content:'';display:block;clear:both;}
+</li>
+			
+			</ol>
+		<h4>二、给父级最后添加空标签</h4>
+			.clear{clear:both}<br />
+			&lt div class="clear"&gt&lt/div&gt<br />
+		<h4>三、其他</h4>
+		a、利用&lt br clear="all"/&gt<br />
+			
+   	b、 课后了解hasLayout<br />
+
+
+	c、利用伪类清除浮动     bat公司常用来清除的方法<br />
+
+		1、before<br />
+
+		2、after   <br />
+				
+	 	兼容 ie8以上的版本浏览器<br />
+
+	d、IE6下使用浮动 同时使用外边距  元素被放大2倍<br />
+
+		解决办法：display:inline;
+
+	</div>		
+ </body>
+</html>

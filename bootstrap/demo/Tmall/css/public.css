@@ -1,0 +1,34 @@
+@charset 'utf-8';
+body{font: 12px/1.5 tahoma,arial,"\5b8b\4f53";
+	height:2500px;
+	}
+*{margin:0px;padding:0px;}
+em,i{font-style:normal;}
+img{margin:0px;border:0;}
+/*浮动*/
+.fL{float:left;}
+.fR{float:right;}
+/*下划线设置*/
+.htU:hover{text-decoration:underline;}
+.tdN{text-decoration:none;}
+/*定位*/
+.pR{position:relative;}.pA{position:absolute;top:0px;right:0px;}
+.pF{position:fixed;}
+.pAL{position:absolute;top:0px;left:0px;}
+.pAR{position:absolute;top:0px;right:0px;}
+.m-Auto{margin:auto;}
+/*清除浮动*/
+.clearF:after{
+	content:'';
+	display:block;
+	clear:both;
+	}
+/*文字颜色*/
+.color-C40{color:#c40000 !important;}
+li{list-style:none;}
+a{text-decoration:none;
+	color:#000;
+	outline:0;
+	}
+input,img,i{vertical-align:middle;}
+/*自定义*/

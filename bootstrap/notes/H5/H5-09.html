@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>please enter your title</title>
+ </head>
+ <body>
+	<div style="color:gold">
+		<h3>地理位置对象：</h3>navigator.geolocation
+		<h3>单词定位请求：</h3>getCurrentPosition(请求成功函数，请求失败函数，数据收集);
+			<div style="margin-left:32px;">
+				<h4>请求成功函数</h4>
+					经度：coords.longitude <br />
+					维度：coords.latitude<br />
+					准确度：coords.accuracy<br />
+					海拔：coords.altitude<br />
+					海拔准确度：coords.altitudeAccuracy<br />
+					行进方向：coords.heading<br />
+					地面速度：coords.speed<br />
+					时间戳：new Date(position.timestamp)<br />
+				<h4>请求失败函数</h4>
+					失败编号 code<br />
+					0：不包括其他错误编号中的错误<br />
+					1：用户拒绝浏览器获取位置信息<br />
+					2：尝试获取用户信息<br />
+					3：设置了timeout值，获取位置超时了<br />
+					 数据收集：json的形式<br />
+					enableHighAcuracy:更精确的查找，默认fasle<br />
+					timeout:获取位置允许最长时间，默认infinity<br />
+					maximumAge:位置可以缓存的最大时间，默认0<br />
+					frequency:频率<br />
+			</div>
+		<h3>多次定位请求</h43>：watchPosition(请求成功函数，请求失败函数，数据收集)
+			类似于定时器	
+
+		<h3>存储：</h3>
+			&nbsp;&nbsp;sessionStorage 临时存储<br />
+			&nbsp;&nbsp;localStorage 本地存储（永久）.setItem(),.getItem(),.removeItem()
+	</div>
+ </body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>兼容性(下)</title>
+ </head>
+ <body>
+	<div style="color:gold;line-height:2;">
+		ie6、7下子元素有相对定位，父级的overflow抱不住子元素<br />
+解决办法：给父级也加相对定位<br />
+
+ie6 绝对定位的元素de父级是奇数的时候，元素的right和bottom的<br />
+值会有1px偏差<br />
+
+ie6、7、8表单元素与父级上下各有1px间隙<br />
+解决办法：给表单元素加浮动 <br />
+	  input背景 transparent<br />
+
+<h3>条件语句注释解决png格式图片：</h3>
+	&lt;!--[if IE 6]&gt;注释语句&lt;![endif]--&gt;<br />
+
+<h3>css hack：</h3>
+	目的是css代码兼容不同浏览器<br />
+	我们也可以反过来利用css hack为不同浏览器编制不同的css效果<br />
+<h3>css hack：</h3>
+	\9 IE10和以下的浏览器解析 px：background：red;background:#000\9;<br />
+	* + ie67解析 px：*background：red；<br />
+	_ ie6解析 <br />
+<h3>透明度：</h3>
+	ie78下使用rgb定义背景色，透明度有滤镜，要想文字不透明，需给文字节点添加position:relative;<br />
+	对支持CSS3的浏览器使用rgba()来实现；<br />
+	对IE8和IE7使用rgb()、opacity和position:relative来实现；<br />
+	对于IE6可以使用1像素图片repeat来实现。<br />
+
+
+	<p>当父元素的直接子元素或者下级子元素的样式拥有position:relative属性时，父元素的overflow:hidden属性就会失效。</p>
+	解决方法:在父元素中使用position:relative
+	</div>
+ </body>
+</html>

@@ -1,0 +1,22 @@
+.border-1px{
+  position:relative;
+  &::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    content: '';
+    width: 100%;
+    border-top: 1px solid #ddd;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 1.5) ,(min-device-pixel-ratio: 1.5){
+  .border-1px::after{
+    transform: scaleY(0.7);
+  }
+}
+@media (-webkit-min-device-pixel-ratio:2) ,(min-device-pixel-ratio: 2){
+  .border-1px::after{
+    transform: scaleY(0.5);
+  }
+}

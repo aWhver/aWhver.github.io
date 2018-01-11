@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>数字雨</title>
+  <style type="text/css">
+	*{margin:0;padding:0}
+	body{background:#000}
+	#can{background:#fff;display:block;}
+  </style>
+ </head>
+ <body>
+	<canvas id="can"></canvas>
+	<script type="text/javascript">
+		var can = document.getElementById('can');
+		var cxt = can.getContext('2d');
+			can.width = window.screen.width;
+			can.height = window.screen.height;
+			//alert(can.width);
+			var size = 18;
+			var y = [];
+			var cols = parseInt(can.width/size);
+			//alert(cols)
+			for (var i=0;i<cols ;i++ )y[i]=0;
+			
+		(function draw(){
+			cxt.beginPath();
+			cxt.fillStyle='rgba(0,0,0,.1)';
+			cxt.fillRect(0,0,can.width,can.height);
+			cxt.fillStyle=color();
+			cxt.font='bold '+size+'px 微软雅黑';
+			cxt.textBaseline='top';
+			for (var i=0;i<cols ;i++ )
+			{
+				if ( Math.random() <= 0.8 )
+				{
+					var num = parseInt(Math.random()*10);
+					cxt.fillText(num,i*size,y[i]);
+					y[i]+=14;
+					if ( y[i] >= can.height && Math.random() <= 0.1 )y[i]=0;
+				};
+			};
+			
+			window.requestAnimationFrame(draw);
+			function color(){
+				var arr = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
+				var str = '';
+				while ( str.length < 6)
+				{
+					var i = parseInt(Math.random()*arr.length); 
+					str += arr[i];
+				}
+				return '#'+str;
+				/*
+				var r = Math.floor(Math.random()*256);
+				var g = Math.floor(Math.random()*256);
+				var b = Math.floor(Math.random()*256);
+				return 'rgb('+r+','+g+','+b+')';
+				*/
+			};
+		})();
+	</script>
+ </body>
+</html>

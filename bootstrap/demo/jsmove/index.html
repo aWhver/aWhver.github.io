@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	*{margin:0;padding:0;}
+	ul{list-style:none;}
+	#banner{
+		width:600px;
+		height:300px;
+		margin:50px auto;
+		position:relative;
+		overflow:hidden;
+		}
+	.img{
+		width:600px;
+		height:300px;
+		}
+	img{width:100%;
+		height:100%;
+		position:absolute;
+		left:600px;
+		}
+	
+	#btn{
+		width:100%;
+		height:30px;
+		
+		position:absolute;
+		bottom:30px;
+		text-align:center;
+		line-height:35px;
+		}
+	li{
+		width:18px;
+		height:18px;
+		background:rgba(0,0,0,0.5);
+		display:inline-block;
+		border-radius:50%;
+
+		}
+	.on{background:#00cc00;}
+	.span-btn{
+		width:20px;
+		height:30px;
+		position:absolute;
+		top:135px;
+		color:#fff;
+		z-index:1;
+		font-size:20px;
+		font-weight:500;
+		background:#0099cc;
+		text-align:center;
+		line-height:30px;
+		cursor:pointer;
+	}
+	#right-btn{right:20px;}
+	#left-btn{left:20px;}
+  </style>
+ </head>
+ <body>
+	<div id="banner">
+		<span id="left-btn" class="span-btn">&lt;</span>
+		<span  class="span-btn"id="right-btn">&gt;</span>
+		<div class="img">
+			<img src="images/1.jpg" alt="" />
+			<img src="images/2.jpg" alt="" />
+			<img src="images/3.webp" alt="" />
+			<img src="images/4.jpg" alt="" />
+			<img src="images/5.jpg" alt="" />
+			<img src="images/6.jpg" alt="" />
+		</div>
+		<div id='btn'>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var aImg=document.getElementsByTagName('img');
+		var aLi=document.getElementsByTagName('li');
+		var oRight_btn=document.getElementById("right-btn");
+		var oLeft_btn=document.getElementById("left-btn");
+		//var aLeft=[];
+		var bannerIndex=0;
+		aImg[0].style.left='0px';
+		aLi[0].className='on';
+		
+		oRight_btn.onclick=function(){
+			change(function(){
+				bannerIndex++;
+				bannerIndex%=aLi.length;
+			});
+		};
+
+		oLeft_btn.onclick=function(){
+			change(function(){
+				bannerIndex--;
+			if (bannerIndex<0)	bannerIndex=aLi.length-1;
+			});
+		};
+
+			for (var i=0;i<aLi.length ;i++ )
+			{
+				aLi[i].index=[i];
+				aLi[i].onclick=function(){
+					var This=this;
+					change(function(){
+						bannerIndex=This.index;
+					});
+				}
+			}
+
+			function change(fn){
+				move(aImg[bannerIndex],'left',-600,20);
+				fn();
+				for (var j=0;j<aLi.length ;j++ )
+				{
+					aLi[j].className='';	
+				}
+				aLi[bannerIndex].className='on';
+				aImg[bannerIndex].style.left='600px';
+				move(aImg[bannerIndex],'left',0,20)
+			};
+
+
+
+
+			function move(obj,attr,number,speed){
+			//获取初始值
+			//var startVal=parseInt(getComputedStyle(obj)[attr]);
+			var startVal = parseInt(getStyle(obj,attr));
+				function getStyle(obj,attr){
+					return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+				}
+				if (startVal>number)
+				{
+					speed = -speed;
+				}
+			//alert(startVal)
+			
+			var time=setInterval(function(){
+				startVal+=speed;
+				var x = startVal>number?startVal<=number:startVal>=number;
+				if (x)
+				{
+					clearInterval(time);
+					startVal=number;
+				}
+				obj.style[attr]=startVal+'px';
+				},20)
+		}
+		
+			
+			
+		</script>
+	</body>

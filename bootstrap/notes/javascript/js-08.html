@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  <div style="color:gold;line-height:2;margin-left:30px;">
+		<h4>字符串：</h4>（以下对象指字符串）
+	长度属性（length）只能读，不能改<br />
+	字符串里的某一个字符 只能读，不能改<br />
+	charAt（num） 内置的一个方法 找到字符串下标为num的字符<br />
+	charCodeAt（num） 找到某个位置字符对应的ascll<br />
+	String.fromCharCode(ascll) 把ascll转换成字符<br />
+	对象.indexOf（）//-1 找不到<br />
+	对象.indexOf（‘字符’）在对象里找到字符所在的位置空格也占位置 空字符为0<br />
+	对象.indexOf（‘字符’，num）从第几位开始找 默认从0<br />
+	对象.lastIndexOf(“字符”) 从后往前找 属性与indexOf一样<br />
+
+<h4>截取字符串：</h4>
+	对象.substr（num）//从第num位开始截取所有字符串<br />
+	对象.substr（num1，num2）//从第num1位开始截取到下标为num2-1的位置<br />
+	substr是主流<br />
+
+	对象.slice（num）//从第num位开始截取所有字符串<br />
+	对象.slice（num1，num2）num位置不能交换<br />
+	对象.slice（-1）//最后一位-1 最后2位-2....<br />
+
+<h4>字母转换：</h4>
+	toUpperCase() //转换成大写<br />
+	toLowerCase() //转换成小写<br />
+
+	<h4>数组：</h4>
+	长度属性（length）能读，能改，内容亦可<br />
+	var arr=【】；以字面量的方式创建数组<br />
+	var arr=new Array（）；以对象的形式创建数组 只一个数字就是长度<br />
+	数组.push（） 往数组后面添加内容<br />
+	数组.unshift() 往数组前面添加内容<br />
+	数组.pop() 删除数组的最后一位<br />
+	数组.shift(）删除数组的第0位<br />
+	数组.splice(num1,num2) 从第num1（下标）位开始 删除num2位 <br />
+	数组.splice(num1,num2，内容) 从第num1位开始 删除num2位 替换内容<br />
+	数组.sort();数组排序 默认从小到大<br />
+	数组.sort(function（x，y）{<br />
+		return x-y //正值 小到大<br />
+		return y-x //负值 大到小<br />
+		
+	})<br />
+	数字1.concat（数组2，数组3）// 数组拼接<br />
+	字符串.split（“”）//把字符串以空字符切割成数组<br />
+	join("") 把切割成数组的字符串连接成字符串<br />
+
+
+<h4>实用知识点：</h4>
+	eval（）// 计算的js 表达式或执行的语句<br />
+	try{ // try 语句测试代码的错误<br />
+	<br />
+	}catch{ // catch 语句错误处理 catch可传参数 catch（参数）<br />
+	<br />
+	}<br />
+	
+	throw new Error（） 语句创建自定义错误<br />
+
+	call 是函数下得一个方法<br />
+	call方法第一个参数可以改变函数执行过程中的内部this指向<br />
+		第二个参数开始就是原来函数的参数列表<br />
+	函数名（）等价于 函数名.call（）<br />
+
+	函数下得方法apply（this，arguments） 第二个是数组<br />
+
+  </div>
+ </body>
+</html>

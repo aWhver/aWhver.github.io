@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  <div style='color:gold;'>
+	display:inline-block;  行块级元素<br />
+
+				1、块级元素在一行上显示ra<br />
+
+				2、支持行内元素设置宽高度<br />
+
+				3、换行解析  (换行的字符被解析 处理起来非常不容易)<br />
+
+				4、不设置宽度盒子的宽度由我们的内容撑开<br />
+
+				5、在Ie6/7不支持   浮动 float<br />
+
+				测试bug  用到时 ietes<br />
+
+
+				浮动：left/right/none   (inline-block)升级版本<br />
+				1、块级元素在一行显示<br />
+				2、让行元素支持宽度<br />
+				3、不设置宽度盒子的宽度由我们的内容撑开<br />
+
+				浮动技巧：<br />
+				1.父级元素下面都要浮动才能在同一水平位置  （在父级元素宽度足够状态下）<br />
+
+
+
+	2、垂直对齐 vertical-algin:;top middle bottom<br />
+	   *在ie6 使用无序列表 时候 列表有浮动 会产生上下的边距  利用vertical解决即可<br />
+		
+				<br />
+				清除浮动<br />
+
+				1、给父级元素设置固定的宽高度
+<br />
+				2、给同级元素加margin-top:;  <br />
+
+				3、给div下面添加一个空的标签&lt div class="clear"&gt&lt/div&gt
+					.clear{clear:both;} 
+					ie6 ie6下高度小于19px，高度的默认就是19px来处理 <br />
+
+					处理之后 最小2px单位<br />
+  </div>
+ </body>
+</html>

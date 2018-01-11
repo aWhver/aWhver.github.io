@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" onselectstart="return false">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>3d图片拖拽</title>
+
+  <style type="text/css">
+	body{background:#000;perspective:800px;}
+	*{margin:0;padding:0;}
+	#wrap{
+		width:100px;
+		height:150px;
+		margin:200px auto;
+		transform-style:preserve-3d;
+		transform:rotatex(-10deg) rotatey(0deg);
+		position:relative;
+	}
+	li{
+		list-style:none;
+		box-shadow:0 0 5px #9900ff;
+		position:absolute;
+		border-radius:4px;
+		overflow:hidden;
+		-webkit-box-reflect:below 5px -webkit-linear-gradient(top,rgba(0,0,0,0) 40%,rgba(0,0,0,.5) 100%);
+	}
+	img{vertical-align:top;width:100px;
+		height:150px;}
+	#wrap p{
+		width:1000px;
+		height:1000px;
+		background:-webkit-radial-gradient(center center,500px 500px,rgba(101,89,210,.3),rgba(51,51,255,0));
+		position:absolute;
+		top:101%;
+		left:50%;
+		margin-top:-500px;
+		margin-left:-500px;
+		transform:rotatex(90deg);
+	}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<ul>
+			<li><img src="images/img/1.jpg" alt="" /></li>
+			<li><img src="images/img/2.jpg" alt="" /></li>
+			<li><img src="images/img/3.jpg" alt="" /></li>
+			<li><img src="images/img/4.jpg" alt="" /></li>
+			<li><img src="images/img/5.jpg" alt="" /></li>
+			<li><img src="images/img/6.jpg" alt="" /></li>
+			<li><img src="images/img/7.jpg" alt="" /></li>
+			<li><img src="images/img/8.jpg" alt="" /></li>
+			<li><img src="images/img/9.jpg" alt="" /></li>
+			<li><img src="images/img/10.jpg" alt="" /></li>
+			<li><img src="images/img/11.jpg" alt="" /></li>
+		</ul>
+		<p></p>
+	</div>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oWrap = document.getElementById("wrap"); 
+		var aLi = document.getElementsByTagName("li");
+		var length = aLi.length;
+		var Deg = 360/11;
+		for (var i =0;i< length;i++ )
+		{
+			//aLi[i].index = i;
+			aLi[i].style.transform = "rotatey("+Deg*i+"deg) translatez(350px)";
+			aLi[i].style.transition = 'transform 1s '+ (length-1-i)*0.2 +'s';
+			aLi[i].ondragstart = function(){
+				return false;
+		};
+		}
+		var initx =-10;
+		var inity = 0;
+		var disx,disy,movex,movey,xN,yN,xL,yL,xU,yU,timer;
+		document.onmousedown=function(e){
+			clearInterval(timer);
+			var e = e || event;
+			disx = e.pageX;
+			disy = e.pageY;
+			//alert(disx)
+			
+			this.onmousemove = function(e){
+				var e = e || event;
+				xN = e.pageX;//左后一次的坐标
+				yN = e.pageY;
+				movex =( xN - disx)*0.1;//变化量
+				movey =( yN - disy)*0.1;
+				//alert(movey)
+				console.log(xN+","+xL);
+				xU = xN-xL;
+				yU = yN-yL;
+				
+				//xU = xL-xN;
+				//yU = yL-yN;
+				//console.log(x);
+				
+				oWrap.style.transform = "rotateX("+(initx-movey)+"deg) rotateY("+(inity+movex)+"deg)";
+				xL=e.pageX;//倒数第二次的坐标
+				yL=e.pageY;
+				
+				};
+			this.onmouseup=function(){
+				//console.log(xU+","+yU);
+				//console.log(xN+","+xL);
+				initx = initx-movey;
+				inity = inity+movex;
+				
+				timer = setInterval(function(){
+					xU *=0.9;
+					yU *=0.9;
+					initx -=yU*0.3;
+					inity +=xU*0.1;
+					if ( Math.abs(xU)<=0.1 && Math.abs(yU)<=0.1 )
+					{
+						clearInterval(timer);
+					}
+					oWrap.style.transform = "rotateX("+initx+"deg) rotateY("+inity+"deg)";
+				},30);
+				this.onmousemove=null;
+			};
+		};
+	};	
+	</script>
+ </body>
+</html>

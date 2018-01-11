@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en" onselectstart="return false">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>倒计时</title>
+  <style type="text/css">
+	#box{
+		width:435px;
+		height:200px;
+		color:#fff;
+		border:3px solid #fff;
+		box-shadow:0px 0px 5px #fff;
+		margin:100px auto;
+		text-align:center;
+	}
+	.restTime{
+		width:100%;
+		height:60px;
+		line-height:60px;
+		font-size:20px;
+	}
+	.restTime span{color:gold;font-weight:bold;font-size:28px;}
+	#jishi{overflow:hidden;margin-left:18px;}
+	#jishi span{
+		width:35px;
+		height:52px;
+		display:block;
+		float:left;
+		background-image:url('image/1.png');
+	}
+	#jishi p{
+		float:left;
+		width:90px;
+		height:52px;
+		line-height:52px;
+		font-weight:bold;
+		font-size:18px;
+	}
+	p#ms{
+		width:auto
+	}
+	p#ms span{transition:1s;}
+  </style>
+ </head>
+ <body style="background:#000000;">
+	<div id="box">
+		<p class="restTime">现在距离<span>春节</span>时间，还剩：</p>
+		<div id="jishi">
+			<p><span class="d"></span><span class="d"></span>天</p>
+			<p><span class="h"></span><span class="h"></span>时</p>
+			<p><span class="m"></span><span class="m"></span>分</p>
+			<p><span class="s"></span><span class="s"></span>秒</p>
+			<p id="ms"><span class="ms" ></span></p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var jishi = document.getElementById('jishi');
+		var innerD = jishi.getElementsByClassName('d');
+		var innerH = jishi.getElementsByClassName('h');
+		var innerM = jishi.getElementsByClassName('m');
+		var innerS = jishi.getElementsByClassName('s');
+		var innerMS = jishi.getElementsByClassName('ms');
+		time({
+			data : '2017/01/28 00:00:00',
+			success:function(dd1,hh1,mm1,ss1){
+				for (var i=0;i<2 ;i++ )
+				{
+					innerD[i].style.backgroundPosition='0px '+(-52*6)*dd1[i]+'px';
+					innerH[i].style.backgroundPosition='0px '+(-52*6)*hh1[i]+'px';
+					innerM[i].style.backgroundPosition='0px '+(-52*6)*mm1[i]+'px';
+					innerS[i].style.backgroundPosition='0px '+(-52*6)*ss1[i]+'px';
+				}
+				if ( ss1[1]==9 )
+				{
+					innerMS[0].style.transition='none';
+				}else{
+					innerMS[0].style.transition='1s';
+				}
+				innerMS[0].style.backgroundPosition='0px '+(-52*6)*ss1[1]+'px';
+			}
+		});
+
+		function time(json){
+			
+
+			var data = json.data;
+			var dataArr = data.split(' ');
+			
+			var regD = /[\.\/-]/g;
+			var regT = /\:/g;
+			var arr1 = dataArr[0].split(regD);
+			//alert(arr1)
+			var arr2 = dataArr[1]?dataArr[1].split(regT):[];
+			var year,month,day,hour,minute,second;
+			year = arr1[0];month=arr1[1]-1||0;day=arr1[2]||1;hour=arr2[0]||0;minute=arr2[1]||0;second=arr2[2]||0;
+			console.log(year,month,day,hour,minute,second);
+			var preDate = new Date(year,month,day,hour,minute,second);
+			
+			run();
+			var timer = setInterval(run,1000);
+
+			function run(){
+				var nowDate = new Date();
+				
+				var s = preDate-nowDate;
+
+				var dd1 = parseInt(s/1000/60/60/24);
+				var hh1 = parseInt(s/1000/60/60);
+				var mm1 = parseInt(s/1000/60%60);
+				var ss1 = parseInt(s/1000%60);
+				
+				dd1=zero(dd1);
+				hh1=zero(hh1);
+				mm1=zero(mm1);
+				ss1=zero(ss1);
+
+				json.success&&json.success(dd1,hh1,mm1,ss1);
+
+				if ( dd1==0 && hh1==0 && mm1==0 && ss1==0 )
+				{
+					clearInterval(timer);
+				}
+			};
+
+			function zero(num){
+				return num<10?('0'+num):num+'';
+			}
+		};
+	</script>
+ </body>
+</html>

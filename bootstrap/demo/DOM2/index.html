@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+ 
+ <input type="text" id="txt"/>
+ <input type="button"value="搜索" id="btn"/>
+ <input type="button"value="排序" id="btn2"/>
+ <table id="tab" border="1" width="500">
+	<thead>
+		<tr>
+			<td>id</td>
+			<td>name</td>
+			<td>age</td>
+			<td>操作</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>4</td>
+			<td>俊潼</td>
+			<td>21</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>张三</td>
+			<td>36</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>比尔</td>
+			<td>32</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>比一</td>
+			<td>32</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>inigo</td>
+			<td>25</td>
+			<td></td>
+		</tr>
+	</tbody>
+ </table>
+ <script type="text/javascript">
+ window.onload=function(){
+	var oBtn=document.getElementById("btn");
+	var oTxt=document.getElementById("txt");
+	var oTab=document.getElementById("tab");
+	var oBtn2=document.getElementById("btn2");
+
+	oBtn2.onclick=function(){
+		
+		var arr=[];
+		for (i=0;i<oTab.tBodies[0].rows.length ;i++ )
+		{
+			arr[i]=oTab.tBodies[0].rows[i];
+		}
+
+		arr.sort(function(tr1,tr2){
+			var n1=parseInt(tr1.cells[0].innerHTML);
+			var n2=parseInt(tr2.cells[0].innerHTML);
+			return n1-n2;
+		});	
+		
+		for (j=0;j<arr.length;j++ )
+		{
+			oTab.tBodies[0].appendChild(arr[j]);
+			
+		}
+	};
+
+	oBtn.onclick=function(){
+	for (i=0;i< oTab.tBodies[0].rows.length;i++ )
+		{
+			var stri=oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+			var stra=oTxt.value.toLowerCase();
+			var arr=stra.split(" ");
+			//alert(arr.length);
+			oTab.tBodies[0].rows[i].style.display="none";
+			for (j=0;j<arr.length ;j++ )
+			{
+				if (stri.search(arr[j])!=-1)  //search  找到并返回字符串的位置，没找到就返回-1
+				{
+				oTab.tBodies[0].rows[i].style.display="block";
+				}
+			}
+		}
+	};
+ };
+ </script>
+ </body>
+</html>

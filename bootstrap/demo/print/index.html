@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>please enter your title</title>
+  <style type="text/css">
+  body{background:#000;}
+	#box{
+		width:600px;
+		height:300px;
+		border:1px solid #fff;
+		margin:80px auto 10px;
+		color:#fff;
+	}
+	.mark{
+		width:600px;
+		border:1px solid #fff;
+		text-align:center;
+		margin:auto;
+	}
+	.mark span{
+		display:inline-block;
+		width:20px;
+		height:12px;
+		background:red;
+	}
+	.mark span.active{background:yellow;}
+	i,em,b{color:#fff;}
+  </style>
+ </head>
+ <body>
+  <div id="box"></div>
+  <div class="mark">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+  </div>
+  <div class="mark">
+	<i>文字的字数:</i><em id="em">0</em><b id="b1">/0</b>
+  </div>
+  <div id="txt" style="display:none;">
+	“旅游”从字意上很好理解。“旅”是旅行，外出，即为了实现某一目的而在空间上从甲地到乙地的行进过程；
+	“游”是外出游览、观光、娱乐，即为达到这些目的所作的旅行。二者合起来即旅游。所以，旅行偏重于行，
+	旅游不但有“行”，且有观光、娱乐含义。 骨刻文中已有“旅游”二字：“旅”和“游”二字在山东昌乐骨刻文中
+	发现，是东夷平民旅游娱乐活动最早的记录，也是中国最早旅游文化的体现。中国旅游不仅历史久远，也是
+	世界上唯一具有最早文字记载的国家。引(《大众日报》2012年8月20日，丁再献《骨刻文将“旅游”记载前推
+	两千多年》，丁再献著《东夷文化与山东·骨刻文释读》)。
+  </div>
+  <script type="text/javascript">
+	window.onload=function(){
+		var i=0;
+		var oBox=document.getElementById("box");
+		var oEm=document.getElementById("em");
+		var oB1=document.getElementById("b1");
+		var oTxt=document.getElementById("txt");
+		var aSpan=document.getElementsByTagName("span");
+		var str=oTxt.innerHTML;
+		oB1.innerHTML="/"+str.length;
+		aSpan[i].className="active";
+		
+		function print(){
+			oBox.innerHTML=str.substr(0,i)+"_";
+			i++;
+			for (var j=0;j<aSpan.length ;j++ )
+			{
+				aSpan[j].className="";
+			}
+			aSpan[i%aSpan.length].className="active";
+			if (i==str.length)
+			{
+				oBox.innerHTML=str.substr(0,str.length);
+				clearInterval(timer);
+			}
+			oEm.innerHTML=i;
+		};
+
+		var timer=setInterval(print,100);
+	};
+  </script>
+ </body>
+</html>

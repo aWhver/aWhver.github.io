@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+	<div style='color:gold;line-height:2;'>
+		标签属性有id、class、type、src等<br />
+对标签的操作<br />
+
+合法标签属性：<br />
+	读写方法：<br />
+	对象.属性&lt a href='#'&gt&lt/a&gt oA.href（ps：先获取）
+
+	注意：<br />
+	class ==> className<br />
+
+
+
+
+自定义标签属性：<br />
+	1.对象.getAttribute('属性'); //获取（读）<br />
+	2.对象.setAttribute('属性','值'); //设置（写）<br />
+	3.对象.removeAttribute('属性'); //删除
+<br />
+	自定义属性：<br />
+	对象.属性名（当对象是指html节点对象的时候 属性名不是合法的）<br />
+	自定义标签属性可以对官方属性进行操作：<br />
+		比如：对象.removeAttribute('id') 可以删除id名<br />
+
+[]的使用：<br />
+	对象后面的 . 绝大部分可以换成 []的形式 []里面必须是字符串
+
+
+
+	</div>
+ </body>
+</html>

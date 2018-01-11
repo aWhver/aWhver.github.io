@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body style='color:gold;'>
+   &lt script type="text/javascript"&gt <br />
+            //script开始和script结束之间是一个最大的'区域'<br />
+            
+            /*    解析JS 分二步<br />
+                    1.定义 -> 找开发者定义所有的变量（var） 定义函数 参数<br />
+                        定义函数的优先级比 var 高<br />
+                        同类型后者覆盖前者<br />
+                    2.执行 -> 从上往执行 从里到外 不能从外向里找
+                         <br />
+                         
+                     
+ 
+                        表达式 = + - * / % ++ -- 表达式是改变值的变化<br />
+            */ <br />
+             
+            /* 一<br />
+                alert(a);<br />
+                var a = 1;<br />
+                alert(a);<br />
+ 
+                1.定义 -> <br />
+                    a= 1<br />
+                2.执行<br />
+                    alert(a);<br />
+                    a = 1; -><br />
+                    alert(a); -> alert(1)<br />
+            */
+             <br />
+            /* 二<br />
+                alert(a);<br />
+                function a(){<br />
+                    alert(1);<br />
+                };<br />
+                alert(a);<br />
+ 
+                 
+                    1.定义<br />
+                        a = function a(){<br />
+                            alert(1);<br />
+                        };<br />
+                    2.执行<br />
+                        alert(a); -> 函数块<br />
+                        alert(a); -> 函数块<br />
+            */<br />
+             
+            /* 三<br />
+                alert(a);<br />
+                function a(){<br />
+                    alert(1);<br />
+                };<br />
+                a();<br />
+                alert(a);<br />
+                 
+                    1.定义<br />
+                        a = function a(){<br />
+                            alert(1);<br />
+                        };<br />
+                    2.执行<br />
+                        alert(a); -> 函数块<br />
+                        a(); ->函数加括号 执行函数 发生一个新的作用域<br />
+                            只要是新的作用域 执行代码分为二步<br />
+                                1.定义<br />
+                                2.执行<br />
+                                    alert(1); -> 1<br />
+                        alert(a); -> 函数块<br />
+            */<br />
+             
+            /* 四<br />
+                alert(a);<br />
+                function a(){<br />
+                    alert(1);<br />
+                };<br />
+                var a = 520;<br />
+                alert(a);<br />
+                function a(){<br />
+                    alert(2);<br />
+                }<br />
+                alert(a);<br />
+                 
+                    1.定义<br />
+                         
+                        a = 520<br />
+                    2.执行<br />
+                        alert(a); -> 函数块<br />
+                        a = 520;<br />
+                        alert(a); -> 520<br />
+                        alert(a); - 520<br />
+ 
+            */<br />
+             
+            /* 五<br />
+                var a = 1;<br />
+                function fn1(){<br />
+                    alert(2);<br />
+                    var a = 3; // 局部变量 只有能自身的这个域起作用<br />
+                }<br />
+                fn1();<br />
+                alert(a);<br />
+                 
+                    1.定义<br />
+                        a = 1<br />
+                        fn1 = function fn1(){<br />
+                            alert(2);<br />
+                            var a = 3;<br />
+                        }<br />
+                    2.执行<br />
+                        a = 1; -> 赋值<br />
+                        fn1(); ->    1.定义<br />
+                                        a = und<br />
+                                    2.执行<br />
+                                        alert(2); ->2<br />
+                        alert(a); ->1 <br />
+            */<br />
+             
+            /* 六<br />
+                var a = 1;<br />
+                function fn1(){<br />
+                    alert(2);<br />
+                    a = 3;<br />
+                }<br />
+                fn1();<br />
+                alert(a);
+ <br />
+                 
+                    1.定义<br />
+                        a = 3<br />
+                        fn1 = function fn1(){<br />
+                            alert(2);<br />
+                            a = 3;<br />
+                        }
+                    2.执行<br />
+                        a = 1; -> <br />
+                        fn1(); ->   1.定义<br />
+                                         
+                                    2.执行<br />
+                                        alert(2); -> 2<br />
+                                        a = 3;<br />
+                        alert(a); -> 3<br />
+            */<br />
+             
+            /* 七<br />
+            var a = 1;<br />
+            function fn1(a){ //相当于 在里面定义局部变量 var a;<br />
+                alert(2); // 如果里头有a 就不从里到外找a <br />
+                a = 3;<br />
+            };<br />
+            fn1();<br />
+            alert(a);<br />
+ 
+             
+                1.定义 找var 定义函数 参数<br />
+                    a = 1;<br />
+                    fn1 = function fn1(a){<br />
+                        alert(2);<br />
+                        a = 3;<br />
+                    };
+                2.执行<br />
+                    a = 1; -><br />
+                    fn1(); -> 1.定义<br />
+                                a = 3<br />
+                              2.执行<br />
+                                alert(2); -> 2<br />
+                                a = 3;<br />
+                    alert(a); ->1<br />
+            */
+             <br />
+            /* 八<br />
+                var a = 1;<br />
+                function fn1(a){ <br />
+                    alert(a); <br />
+                    a = 3;<br />
+                };<br />
+                fn1();<br />
+                alert(a);<br />
+ 
+                JS解析过程<br />
+                    1.定义<br />
+                        a = 1<br />
+                        fn1 = function fn1(a){ <br />
+                            alert(a); <br />
+                            a = 3;<br />
+                        };<br />
+                    2.执行<br />
+                        a = 1; <br />
+                        fn1(); ->   1.定义<br />
+                                        a = 3<br />
+                                    2.执行<br />
+                                        alert(a); -> und<br />
+                                        a = 3; -><br />
+                        alert(a); -> 1<br />
+            */<br />
+             
+            /* 九<br />
+                var a = 1;<br />
+                function fn1(a){  //形式上的参数<br />
+                    alert(a); <br />
+                    a = 3;<br />
+                };<br />
+                fn1(a); // 实际的参数<br />
+                alert(a);<br />
+                 
+                    1.定义<br />
+                        a = 1<br />
+                        fn1 = function fn1(a){ <br />
+                            alert(a); <br />
+                            a = 3;<br />
+                        };<br />
+                    2.执行<br />
+                        a = 1;<br />
+                        fn1(a); ->  1.定义<br />
+                                        a= 3<br />
+                                    2.执行<br />
+                                        a=1; -> 1<br />
+                                        alert(a); -> 1<br />
+                                        a = 3;<br />
+                        alert(a); -> 1<br />
+            */<br />
+            /* 十 外面不能访问里面<br />
+                alert(a);<br />
+                function fn(){<br />
+                    var a= 1;<br />
+                };<br />
+            */<br />
+        &lt/script&gt
+ </body>
+</html>
